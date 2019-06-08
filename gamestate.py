@@ -1,13 +1,31 @@
-import uuid, jsonpickle
-import hexes, icebreakers, research
+import uuid, jsonpickle, hexes, icebreakers, research, time
+
+ticks_per_second = 10
+tick_duration = round(1000 / ticks_per_second)
+start_money = 100
 
 class GameState:
-
     def __init__(self):
         self.id = str(uuid.uuid4())
         self.colors = hexes.initial_state(self)
         self.icebreakers = icebreakers.get_all()
         self.research = research.get_all()
+        self.last_request = self.ct()
+        self.money = start_money
+        self.research_level = 0
+
+    def ct(self):
+        return int(round(time.time() * 1000))
+
+    def update(self):
+        return None
+
+    def update_all(self):
+        t = self.ct()
+        diff = round(t - self.last_request)
+        ticks = round(diff / tick_duration)
+        for _ in range(ticks):
+            self.update()
 
     def update(self):
         for brkr in self.icebreakers:
