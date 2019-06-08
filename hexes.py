@@ -55,7 +55,7 @@ def is_hex_exists(r, c):
     if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
         return None
 
-    return True
+    return not is_hex_restricted(r, c)
 
 def is_hex_restricted(r, c):
     for hexs in land_hexes:
