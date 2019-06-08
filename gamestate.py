@@ -48,6 +48,9 @@ class GameState:
         if res:
             res.update()
 
+        for shp in self.ships:
+            sho.update()
+
     def build_datacenter(self, row, col):
         if self.money >= self.datacenter_cost:
             self.money -= self.datacenter_cost

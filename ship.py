@@ -41,7 +41,7 @@ class Ship:
     def get_duration_to_hex(self, hex):
         return int(round(normal_duration / self.speed))
 
-    def update(self, state):
+    def update(self):
         if self.active:
             if self.left_ticks > 0:
                 self.left_ticks -= 1
