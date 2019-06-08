@@ -15,17 +15,12 @@ sessions = {}
 @app.route('/gamestate', methods=['POST'])
 @cross_origin()
 def gamestate_json():
-    #
-    #user_action = req_data['user_action']['param1']
-    #last_process_timestamp = req_data['last_process_timestamp']
     id = ''
     try:
         req_data = request.get_json()
         id = req_data['id']
     except:
         id = ''
-    # id = str(request.args.get('id'))
-    # if not id:
 
     if id and not (id in sessions):
         return '{"error": "No session found"}'
