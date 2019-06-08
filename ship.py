@@ -31,7 +31,7 @@ class Ship:
         m = Movement()
         m.rotation = -60
         m.hex = [49, 14]
-        m.time_to_me = self.get_duration_to_hex(self, m.hex)
+        m.time_to_me = self.get_duration_to_hex(m.hex)
         m.direction = [1, 1]
 
         self.movements = [m]
