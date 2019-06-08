@@ -38,5 +38,3 @@ def get_all():
     for res_data in researches:
         all.append(Research(res_data))
     return all
-
-
