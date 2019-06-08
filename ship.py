@@ -71,14 +71,14 @@ class Ship:
                 next_movement.direction = next_cw[1]
                 next_movement.hex = next_cw[2]
                 next_duration = self.get_duration_to_hex(next_movement.hex)
-                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_cw[0]))) # TODO
+                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_cw[0])))
                 # rotate clockwise
                 next_movement.rotation = movement.rotation + next_cw[0] * 60
             else:
                 next_movement.direction = next_ccw[1]
                 next_movement.hex = next_ccw[2]
                 next_duration = self.get_duration_to_hex(next_movement.hex)
-                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_ccw[0]))) # TODO
+                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_ccw[0])))
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
         
