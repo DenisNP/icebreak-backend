@@ -19,8 +19,14 @@ class Research:
         self.maximum_progress = data['maximum_progress']
         self.progress = 0
 
-    def update(self, gamestate):
-        return None
+    def update(self):
+        if self.progress > 0 and self.progress < self.maximum_progress:
+            self.progress = self.progress + 1
+        
+    def start_research(self, gamestate):
+        if not gamestate.check_if_any_research_in_progress():
+            self.progress = 1
+           
 
 def data_by_id(id):
     for res in researches:

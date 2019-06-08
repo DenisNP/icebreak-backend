@@ -33,6 +33,14 @@ class GameState:
     
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]
+    
+    def check_if_any_research_in_progress(self):
+        res = list(filter(lambda x: x.progress > 0 and x.progress < x.maximum_progress, self.research))
+        if res:
+            return res[0]
+        
+        return None
+
             
     def to_json(self):
         return jsonpickle.encode(self, unpicklable=False)
