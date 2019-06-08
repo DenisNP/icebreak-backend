@@ -18,11 +18,12 @@ def gamestate_json():
     #
     #user_action = req_data['user_action']['param1']
     #last_process_timestamp = req_data['last_process_timestamp']
-    try:
-        req_data = request.get_json(force=True)
-        id = req_data['id']
-    except:
-        id = ''
+    print(request.headers)
+    # try:
+    req_data = request.get_json(force=True)
+    id = req_data['id']
+    # except:
+    #     id = ''
     # id = str(request.args.get('id'))
     # if not id:
     if id and (id in sessions):
