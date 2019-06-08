@@ -44,12 +44,8 @@ class GameState:
             brkr.update(self)
         
         res = self.check_if_any_research_in_progress()
-
         if res:
             res.update()
-        for rsrch in self.research:
-            if (not rsrch.progress == 0 and not rsrch.progress == rsrch.maximum_progress):
-                rsrch.update(self)
 
     def build_datacenter(self, row, col):
         if self.money >= self.datacenter_cost:
