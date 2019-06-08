@@ -17,8 +17,8 @@ clockwise = [[1, 1], [1, 0], [1, -1], [-1, -1], [-1, 0], [-1, 1]]
 movements_length = 3
 
 class Movement:
-    time_to_next = normal_duration
-    rotation = 60
+    time_to_me = normal_duration
+    rotation = -60
     hex = [49, 14]
     direction = [1, 1]
 
@@ -27,7 +27,14 @@ class Ship:
         self.id = data['id']
         self.speed = data['speed']
         self.active = False
-        self.movements = [Movement()]
+        
+        m = Movement()
+        m.rotation = -60
+        m.hex = [49, 14]
+        m.time_to_me = self.get_duration_to_hex(m.hex)
+        m.direction = [1, 1]
+
+        self.movements = [m]
         for _ in range(movements_length - 1):
             self.set_next_hex()
 
@@ -45,14 +52,14 @@ class Ship:
         while len(self.movements) > movements_length - 1:
             self.movements.pop(0)
         self.movements.append(self.next_movement_from(self.movements[-1]))
-        self.left_ticks = self.movements[1].time_to_next
+        self.left_ticks = self.movements[1].time_to_me
 
     def next_movement_from(self, movement):
         next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], movement.direction[0], movement.direction[1])
         if next:
             next_movement = Movement()
             next_movement.hex = next
-            next_movement.time_to_next = self.get_duration_to_hex(next)
+            next_movement.time_to_me = self.get_duration_to_hex(next)
             next_movement.rotation = movement.rotation
             next_movement.direction = movement.direction
         else:
@@ -63,14 +70,14 @@ class Ship:
                 next_movement.direction = next_cw[1]
                 next_movement.hex = next_cw[2]
                 next_duration = self.get_duration_to_hex(next_movement.hex)
-                next_movement.time_to_next = int(round(next_duration * (rotation_downspeed ** next_cw[0]))) # TODO
+                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_cw[0]))) # TODO
                 # rotate clockwise
                 next_movement.rotation = movement.rotation + next_cw[0] * 60
             else:
                 next_movement.direction = next_ccw[1]
                 next_movement.hex = next_ccw[2]
                 next_duration = self.get_duration_to_hex(next_movement.hex)
-                next_movement.time_to_next = int(round(next_duration * (rotation_downspeed ** next_ccw[0]))) # TODO
+                next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_ccw[0]))) # TODO
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
         

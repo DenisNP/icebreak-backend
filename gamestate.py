@@ -54,6 +54,13 @@ class GameState:
             self.set_next_dc_cost()
             self.datacenters.append(DataCenter(row, col))
             self.research_level -= 1
+
+    def activate_ship(self, id):
+        for shp in self.ships:
+            if shp.id == id:
+                shp.active = True
+                # TODO event?
+                break
     
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]

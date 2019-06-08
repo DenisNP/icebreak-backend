@@ -115,6 +115,8 @@ class IceBreaker:
         #iterating progress bar
         if self.progress > 0 and self.progress < self.maximum_progress:
             self.progress = self.progress + 1
+            if self.progress == self.maximum_progress:
+                gamestate.activate_ship(self.id)
 
         #checking if technologies are created and set them completed
         for research in self.requirements:
