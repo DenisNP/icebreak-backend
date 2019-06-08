@@ -73,6 +73,8 @@ class Ship:
                 next_movement.time_to_next = int(round(next_duration * (rotation_downspeed ** next_ccw[0]))) # TODO
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
+        
+        return next_movement
             
     def find_index(self, direction, array):
         for i in range(6):
