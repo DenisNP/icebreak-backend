@@ -17,9 +17,6 @@ class GameState:
     def ct(self):
         return int(round(time.time() * 1000))
 
-    def update(self):
-        return None
-
     def update_all(self):
         t = self.ct()
         diff = round(t - self.last_request)
@@ -30,6 +27,8 @@ class GameState:
     def update(self):
         for brkr in self.icebreakers:
             brkr.update(self)
+        for rsrch in self.research:
+            rsrch.update(self)
     
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]

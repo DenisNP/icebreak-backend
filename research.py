@@ -17,6 +17,9 @@ class Research:
         self.required_level = data['required_level']
         self.progress = 0
 
+    def update(self, gamestate):
+        return None
+
 def data_by_id(id):
     for res in researches:
         if res['id'] == id:
