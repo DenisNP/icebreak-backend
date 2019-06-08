@@ -42,7 +42,7 @@ def neighbour_hex(row, col, horizontal, vertical):
         r -= vertical
         if row % 2 == 1 and horizontal == -1:
             c -= 1
-        elif row % 2 == 1 and horizontal == 1:
+        elif row % 2 == 0 and horizontal == 1:
             c += 1
 
     # exclude edges
