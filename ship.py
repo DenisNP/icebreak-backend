@@ -42,7 +42,7 @@ class Ship:
                 self.set_next_hex()
 
     def set_next_hex(self):
-        if len(self.movements) > 1:
+        while len(self.movements) > movements_length - 1:
             self.movements.pop(0)
         self.movements.append(self.next_movement_from(self.movements[-1]))
         self.left_ticks = self.movements[1].time_to_next

@@ -15,7 +15,7 @@ class GameState:
         self.icebreakers = icebreakers.get_all()
         self.research = research.get_all()
         self.ships = ship.get_all()
-        self.ships[0].active = True
+        # self.ships[0].active = True
 
         self.last_request = self.ct()
         self.money = start_money
