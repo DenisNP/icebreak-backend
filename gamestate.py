@@ -2,7 +2,7 @@ import uuid, jsonpickle, hexes, icebreakers, research, time
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
-start_money = 100
+start_money = 10000
 
 class GameState:
     def __init__(self):
@@ -28,7 +28,8 @@ class GameState:
         for brkr in self.icebreakers:
             brkr.update(self)
         for rsrch in self.research:
-            rsrch.update(self)
+            if (not rsrch.progress == 0 and not rsrch.progress == rsrch.maximum_progress):
+                rsrch.update(self)
     
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]
@@ -38,4 +39,10 @@ class GameState:
 
 
 state = GameState()
-print (state.get_research_by_id(1).name)
+
+for brkr in state.icebreakers:
+    for req in brkr.requirements:
+        req.completed = True
+    
+    brkr.start_building(state)
+

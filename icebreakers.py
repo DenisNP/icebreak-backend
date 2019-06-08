@@ -7,6 +7,7 @@ breakers = [
         'image': 'http://seaman-sea.ru/images/stories/main8/atamahod_lenin.jpg',
         'description': '"Ленин" связал запад и восток страны: даже тяжелые арктические льды не могли помешать судну проследовать кратчайшим морским путем от европейской части к Дальнему Востоку.',
         'requirements': [1],
+        'maximum_progress' : 1000,
         'cost': 1000
     },
     {
@@ -15,6 +16,7 @@ breakers = [
         'image': 'http://seaman-sea.ru/images/stories/main8/atamahod_lenin.jpg',
         'description': '"Арктика" связал запад и восток страны: даже тяжелые арктические льды не могли помешать судну проследовать кратчайшим морским путем от европейской части к Дальнему Востоку.',
         'requirements': [1],
+        'maximum_progress': 10000,
         'cost': 10000
     }
 ]
@@ -27,6 +29,7 @@ class IceBreaker:
         self.description = data['description']
         self.cost = data['cost']
         self.progress = 0
+        self.maximum_progress = data['maximum_progress']
         self.requirements = []
         for req in data['requirements']:
             new_req = {}
@@ -37,25 +40,23 @@ class IceBreaker:
 
     def update(self, gamestate):
         #iterating progress bar
-        if self.progress > 0 and self.progress < 100:
+        if self.progress > 0 and self.progress < self.maximum_progress:
             self.progress = self.progress + 1
 
-        #checking if technologies are created
+        #checking if technologies are created and set them completed
         for research in self.requirements:
             res = gamestate.get_research_by_id(research.id)
-            if not research.completed and res.progress == 100:
+            if not research.completed and res.progress == res.maximum_progress:
                 research.completed = True
-        
+ 
+    def start_building(self, gamestate):
+        if gamestate.money >= self.cost and all(res.completed == True for res in self.requirements):
+            gamestate.money = gamestate.money - self.cost
+            self.progress = 1
 
-       
-        #check if technologies are created, if yes set them completed
-
- #   def start_building(self):
- #       distract money
- #       set progress to 1
-        
 def get_all():
     all = []
     for br_data in breakers:
         all.append(IceBreaker(br_data))
     return all
+

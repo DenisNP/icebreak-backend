@@ -4,7 +4,8 @@ researches = [
         'name' : 'Атомный Реактор',
         'image': 'http://seaman-sea.ru/images/stories/main8/atamahod_lenin.jpg',
         'description': 'Без атомного реактора далеко не уплывешь',
-        'required_level': 1
+        'required_level': 1,
+        'maximum_progress' : 200
     }
 ]
 
@@ -15,6 +16,7 @@ class Research:
         self.image = data['image']
         self.description = data['description']
         self.required_level = data['required_level']
+        self.maximum_progress = data['maximum_progress']
         self.progress = 0
 
     def update(self, gamestate):
