@@ -1,16 +1,16 @@
 import math
 
-hor_count_odd = 51
+hor_count_odd = 101
 hor_count_even = hor_count_odd - 1
-ver_count = 24
+ver_count = 50
 
-hex_width = 80
+hex_width = 20
 
 def initial_state(state):
     colors = []
     for v in range(ver_count):
         hor_count = hor_count_even if v % 2 == 0 else hor_count_odd
-        last_color = '#ff0000'
+        last_color = '#0000ff'
         colors.append([])
         for _ in range(hor_count):        
             colors[v].append(last_color)

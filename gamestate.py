@@ -63,8 +63,6 @@ class GameState:
             return res[0]
         
         return None
-
             
     def to_json(self):
         return jsonpickle.encode(self, unpicklable=False)
-
