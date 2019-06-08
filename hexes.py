@@ -1,8 +1,8 @@
 import math
 
-hor_count_odd = 25
+hor_count_odd = 51
 hor_count_even = hor_count_odd - 1
-ver_count = 12
+ver_count = 24
 
 hex_width = 80
 
