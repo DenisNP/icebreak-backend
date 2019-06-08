@@ -38,11 +38,11 @@ land_hexes =  list(map(lambda x: [0, x], range(58))) + \
 
 def initial_state(state):
     colors = []
-    for v in range(ver_count):
-        hor_count = hor_count_even if v % 2 == 0 else hor_count_odd
+    for r in range(ver_count):
+        hor_count = hor_count_even if r % 2 == 0 else hor_count_odd
         colors.append([])
-        for h in range(hor_count):        
-            colors[v].append(land_color if is_hex_restricted(h, v) else normal_color)
+        for c in range(hor_count):        
+            colors[r].append(land_color if is_hex_restricted(r, c) else normal_color)
 
     return colors
 
