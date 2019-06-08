@@ -2,7 +2,7 @@ import math
 
 hor_count_odd = 101
 hor_count_even = hor_count_odd - 1
-ver_count = 50
+ver_count = 70
 
 hex_width = 20
 
@@ -26,3 +26,30 @@ def get_coords(row, column):
     y = int(hex_width / math.sqrt(3)/2 + 3/(2 * math.sqrt(3)) * hex_width * row) 
 
     return [x, y]
+
+def neighbour_hex(row, col, horizontal, vertical):
+    r = row
+    c = col
+
+    if vertical == 0:
+        c += horizontal
+    else:
+        r -= vertical
+        if row % 2 == 1 and horizontal == -1:
+            c -= 1
+        elif row % 2 == 1 and horizontal == 1:
+            c += 1
+
+    # exclude edges
+    if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
+        return None
+    
+    return [r, c]
+
+def is_hex_exists(r, c):
+    if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
+        return None
+
+    return True
+    
+    
