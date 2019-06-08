@@ -48,6 +48,9 @@ def neighbour_hex(row, col, horizontal, vertical):
     # exclude edges
     if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
         return None
+
+    if not.is_hex_exists(r, c):
+        return None
     
     return [r, c]
 
