@@ -26,6 +26,10 @@ def gamestate_json():
         id = ''
     # id = str(request.args.get('id'))
     # if not id:
+
+    if id and not (id in sessions):
+        return '{"error": "No session found"}'
+
     if id and (id in sessions):
         session = sessions[id]
         session.update_all()
