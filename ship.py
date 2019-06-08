@@ -27,7 +27,7 @@ class Ship:
         if self.left_ticks > 0:
             self.left_ticks -= 10
         else:
-            set_next_hex()
+            self.set_next_hex()
 
     def set_next_hex(self):
         self.choose_next_hex()
