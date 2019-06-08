@@ -1,8 +1,11 @@
 from flask import Flask, request  #import main Flask class and request object
+from flask_cors import CORS, cross_origin
 import sys
 from gamestate import GameState
 
 app = Flask(__name__) #create the Flask app
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 temp_state = GameState()
 
 @app.route('/gamestate', methods=['POST'])
