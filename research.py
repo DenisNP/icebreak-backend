@@ -27,7 +27,6 @@ class Research:
         if not gamestate.check_if_any_research_in_progress():
             self.progress = 1
            
-
 def data_by_id(id):
     for res in researches:
         if res['id'] == id:

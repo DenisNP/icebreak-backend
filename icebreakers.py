@@ -37,6 +37,7 @@ class IceBreaker:
             new_req['completed'] = False
             new_req['id'] = req
             new_req['name'] = req_data['name']
+            self.requirements.append(new_req)
 
     def update(self, gamestate):
         #iterating progress bar
