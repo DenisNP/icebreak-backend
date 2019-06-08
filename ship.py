@@ -1,4 +1,4 @@
-import hexes
+import hexes, sys
 
 ships = [
     {
@@ -47,6 +47,7 @@ class Ship:
                 self.left_ticks -= 1
             else:
                 self.set_next_hex()
+            # print(self.left_ticks)
 
     def set_next_hex(self):
         while len(self.movements) > movements_length - 1:
