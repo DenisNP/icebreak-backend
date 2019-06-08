@@ -15,10 +15,13 @@ sessions = {}
 @app.route('/gamestate', methods=['POST'])
 @cross_origin()
 def gamestate_json():
-    #req_data = request.get_json()
+    #
     #user_action = req_data['user_action']['param1']
     #last_process_timestamp = req_data['last_process_timestamp']
+    req_data = request.get_json()
     id = str(request.args.get('id'))
+    if not id:
+        id = str(req_data['id'])
 
     if id and (id in sessions):
         session = sessions[id]
