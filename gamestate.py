@@ -48,4 +48,3 @@ for brkr in state.icebreakers:
         req.completed = True
     
     brkr.start_building(state)
-
