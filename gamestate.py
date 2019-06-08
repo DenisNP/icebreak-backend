@@ -30,9 +30,11 @@ class GameState:
     def update(self):
         for brkr in self.icebreakers:
             brkr.update(self)
-        for rsrch in self.research:
-            if (not rsrch.progress == 0 and not rsrch.progress == rsrch.maximum_progress):
-                rsrch.update(self)
+        
+        res = self.check_if_any_research_in_progress()
+
+        if res:
+            res.update()
     
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]
@@ -56,3 +58,4 @@ for brkr in state.icebreakers:
         req.completed = True
     
     brkr.start_building(state)
+
