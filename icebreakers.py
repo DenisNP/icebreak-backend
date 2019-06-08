@@ -120,9 +120,9 @@ class IceBreaker:
 
         #checking if technologies are created and set them completed
         for research in self.requirements:
-            res = gamestate.get_research_by_id(research.id)
-            if not research.completed and res.progress == res.maximum_progress:
-                research.completed = True
+            res = gamestate.get_research_by_id(research['id'])
+            if not research['completed'] and res.progress == res.maximum_progress:
+                research['completed'] = True
  
     def start_building(self, gamestate):
         if gamestate.money >= self.cost and self.progress == 0 and all(res.completed == True for res in self.requirements):

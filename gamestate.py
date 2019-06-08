@@ -1,4 +1,5 @@
 import uuid, jsonpickle, hexes, icebreakers, research, time, ship
+import sys
 from datacenter import DataCenter
 
 ticks_per_second = 10
@@ -37,8 +38,10 @@ class GameState:
         t = self.ct()
         diff = round(t - self.last_request)
         ticks = round(diff / tick_duration)
+        # print(ticks, file=sys.stdout)
         for _ in range(ticks):
             self.update()
+        self.last_request = t
 
     def update(self):
         for brkr in self.icebreakers:
