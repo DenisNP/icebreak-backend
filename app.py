@@ -5,7 +5,8 @@ from gamestate import GameState
 app = Flask(__name__) #create the Flask app
 temp_state = GameState()
 
-@app.route('/gamestate', methods=['POST']) #GET requests will be blocked
+@app.route('/gamestate', methods=['POST'])
+@cross_origin()
 def gamestate_json():
 
     req_data = request.get_json()
