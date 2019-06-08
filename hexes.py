@@ -26,15 +26,15 @@ land_hexes =  list(map(lambda x: [0, x], range(58))) + list(map(lambda x: [0, x]
               list(map(lambda x: [14, x], range(50))) + list(map(lambda x: [14, x], range(90, 100))) + \
               list(map(lambda x: [15, x], range(50))) + list(map(lambda x: [15, x], range(91, 100))) + \
               list(map(lambda x: [16, x], range(49))) + list(map(lambda x: [16, x], range(91, 100))) + \
-              list(map(lambda x: [17, x], range(51))) + list(map(lambda x: [17, x], range(90, 100))) + \
-              list(map(lambda x: [18, x], range(52))) + list(map(lambda x: [18, x], range(90, 100))) + \
-              list(map(lambda x: [19, x], range(53))) + list(map(lambda x: [19, x], range(91, 100))) + \
+              list(map(lambda x: [17, x], range(51))) + list(map(lambda x: [17, x], range(91, 100))) + \
+              list(map(lambda x: [18, x], range(52))) + list(map(lambda x: [18, x], range(91, 100))) + \
+              list(map(lambda x: [19, x], range(53))) + list(map(lambda x: [19, x], range(92, 100))) + \
               list(map(lambda x: [20, x], range(53))) + list(map(lambda x: [20, x], range(91, 100))) + \
-              list(map(lambda x: [21, x], range(56))) + list(map(lambda x: [21, x], range(91, 100))) + \
-              list(map(lambda x: [22, x], range(57))) + list(map(lambda x: [18, x], range(90, 100))) + \
-              list(map(lambda x: [23, x], range(58))) + list(map(lambda x: [19, x], range(91, 100))) + \
-              list(map(lambda x: [24, x], range(57))) + list(map(lambda x: [20, x], range(91, 100))) + \
-              list(map(lambda x: [25, x], range(57))) + list(map(lambda x: [21, x], range(91, 100)))             
+              list(map(lambda x: [21, x], range(56))) + list(map(lambda x: [21, x], range(92, 100))) + \
+              list(map(lambda x: [22, x], range(7,57))) + list(map(lambda x: [18, x], range(90, 100))) + \
+              list(map(lambda x: [23, x], range(8,58))) + list(map(lambda x: [19, x], range(91, 100))) + \
+              list(map(lambda x: [24, x], range(13,57))) + list(map(lambda x: [20, x], range(91, 100))) + \
+              list(map(lambda x: [25, x], range(14,57))) + list(map(lambda x: [21, x], range(91, 100)))             
 
 def initial_state(state):
     colors = []
