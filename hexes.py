@@ -9,15 +9,15 @@ hex_width = 20
 normal_color = '#00ff00'
 land_color = '#ff0000'
 
-land_hexes =  list(map(lambda x: [0, x], range(58))) + list(map(lambda x: [13, x], range(94, 100))) + \
-              list(map(lambda x: [1, x], range(58))) + list(map(lambda x: [13, x], range(94, 100))) + \
-              list(map(lambda x: [2, x], range(57))) + list(map(lambda x: [13, x], range(94, 100))) + \
-              list(map(lambda x: [3, x], range(57))) + list(map(lambda x: [13, x], range(94, 100))) + \
-              list(map(lambda x: [4, x], range(56))) + list(map(lambda x: [13, x], range(93, 100))) + \
-              list(map(lambda x: [5, x], range(56))) + list(map(lambda x: [13, x], range(93, 100))) + \
-              list(map(lambda x: [6, x], range(54))) + list(map(lambda x: [13, x], range(93, 100))) + \
-              list(map(lambda x: [7, x], range(54))) + list(map(lambda x: [13, x], range(93, 100))) + \
-              list(map(lambda x: [8, x], range(53))) + list(map(lambda x: [13, x], range(92, 100))) + \
+land_hexes =  list(map(lambda x: [0, x], range(58))) + list(map(lambda x: [0, x], range(94, 100))) + \
+              list(map(lambda x: [1, x], range(58))) + list(map(lambda x: [1, x], range(94, 100))) + \
+              list(map(lambda x: [2, x], range(57))) + list(map(lambda x: [2, x], range(94, 100))) + \
+              list(map(lambda x: [3, x], range(57))) + list(map(lambda x: [3, x], range(94, 100))) + \
+              list(map(lambda x: [4, x], range(56))) + list(map(lambda x: [4, x], range(93, 100))) + \
+              list(map(lambda x: [5, x], range(56))) + list(map(lambda x: [5, x], range(93, 100))) + \
+              list(map(lambda x: [6, x], range(54))) + list(map(lambda x: [6, x], range(93, 100))) + \
+              list(map(lambda x: [7, x], range(54))) + list(map(lambda x: [7, x], range(93, 100))) + \
+              list(map(lambda x: [8, x], range(53))) + list(map(lambda x: [8, x], range(92, 100))) + \
               list(map(lambda x: [9, x], range(53))) + [[9,86]] + [[9,87]] + list(map(lambda x: [9, x], range(92, 100))) + \
               list(map(lambda x: [10, x], range(51))) + list(map(lambda x: [10, x], range(85, 89))) + list(map(lambda x: [10, x], range(91, 100))) + \
               list(map(lambda x: [11, x], range(51))) + list(map(lambda x: [11, x], range(86, 89))) + list(map(lambda x: [11, x], range(91, 100))) + \
@@ -29,7 +29,7 @@ land_hexes =  list(map(lambda x: [0, x], range(58))) + list(map(lambda x: [13, x
               list(map(lambda x: [17, x], range(51))) + list(map(lambda x: [17, x], range(90, 100))) + \
               list(map(lambda x: [18, x], range(52))) + list(map(lambda x: [18, x], range(90, 100))) + \
               list(map(lambda x: [19, x], range(53))) + list(map(lambda x: [19, x], range(91, 100))) + \
-              list(map(lambda x: [20, x], range(44))) + list(map(lambda x: [20, x], range(91, 100))) + \
+              list(map(lambda x: [20, x], range(53))) + list(map(lambda x: [20, x], range(91, 100))) + \
               list(map(lambda x: [21, x], range(56))) + list(map(lambda x: [21, x], range(91, 100))) + \
               list(map(lambda x: [22, x], range(57))) + list(map(lambda x: [18, x], range(90, 100))) + \
               list(map(lambda x: [23, x], range(58))) + list(map(lambda x: [19, x], range(91, 100))) + \
