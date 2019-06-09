@@ -1,6 +1,7 @@
-import uuid, jsonpickle, hexes, icebreakers, research, time, ship, ice
+import uuid, jsonpickle, hexes, icebreakers, research, time, ship
 import sys
 from datacenter import DataCenter
+from ice import Ice
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
@@ -25,7 +26,7 @@ class GameState:
         self.datacenter_cost = 0
         self.set_next_dc_cost()
 
-        self.ice = ice.ice
+        self.ice_field = Ice()
 
     def ct(self):
         return int(round(time.time() * 1000))
@@ -56,6 +57,8 @@ class GameState:
         for shp in self.ships:
             shp.update()
 
+        self.ice_field.update()
+
     def build_datacenter(self, row, col):
         if self.money >= self.datacenter_cost:
             for b_hex in self.build_hexes:
@@ -84,6 +87,12 @@ class GameState:
             return res[0]
         
         return None
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        del state['ice_field']
+        state['ice'] = self.ice_field.current_field
+        return state
             
     def to_json(self):
         return jsonpickle.encode(self, unpicklable=False)

@@ -20,7 +20,7 @@ movements_length = 3
 class Movement:
     time_to_me = normal_duration
     rotation = -60
-    hex = [70, 30]
+    hex = [65, 25]
     direction = [1, 1]
 
 class Ship:
@@ -31,7 +31,7 @@ class Ship:
         
         m = Movement()
         m.rotation = -60
-        m.hex = [70, 30]
+        m.hex = [65, 25]
         m.time_to_me = self.get_duration_to_hex(m.hex)
         m.direction = [1, 1]
 
@@ -127,15 +127,16 @@ class Ship:
             potential_next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], new_direction[0], new_direction[1])
             if potential_next:
                 break
-        return [dist, new_direction, potential_next, new_idx]
+        return [dist, new_direction, potential_next]
 
     def get_allowed_neighbours(self):
         neighbours = []
-        m = self.movements[-1]
-        for direction in clockwise:
-            n = hexes.neighbour_hex(m.hex[0], m.hex[1], direction[0], direction[1])
-            if n:
-                neighbours.append(n)
+        if len(self.movements):
+            m = self.movements[-1]
+            for direction in clockwise:
+                n = hexes.neighbour_hex(m.hex[0], m.hex[1], direction[0], direction[1])
+                if n:
+                    neighbours.append(n)
 
         return neighbours
 
