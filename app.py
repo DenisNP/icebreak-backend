@@ -27,13 +27,14 @@ def gamestate_json():
 
     if id and (id in sessions):
         session = sessions[id]
-        session.update_all()
-        return session.to_json()
     else:
         session = GameState()
         sessions[session.id] = session
-        session.update_all()
-        return session.to_json()
+                
+
+    
+    session.update_all()
+    return session.to_json()
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)  #run app in debug mode on port 5000

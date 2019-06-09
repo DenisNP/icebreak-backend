@@ -81,12 +81,51 @@ class GameState:
     def get_research_by_id(self, research_id):
         return list(filter(lambda x: x.id == research_id, self.research))[0]
     
+    def get_icebreaker_by_id(self, icebreaker_id):
+        return list(filter(lambda x: x.id == icebreaker_id, self.icebreakers))[0]
+    
+    def get_datacenter_by_id(self, datacenter_id):
+        return list(filter(lambda x: x.id == datacenter_id, self.datacenters))[0]
+    
+    def get_ship_by_id(self, ship_id):
+        return list(filter(lambda x: x.id == ship_id, self.ships))[0]
+    
     def check_if_any_research_in_progress(self):
         res = list(filter(lambda x: x.progress > 0 and x.progress < x.maximum_progress, self.research))
         if res:
             return res[0]
         
         return None
+
+    def parse_action(self, req_data):
+        try:
+            action = req_data['action']
+        except:
+            action = ''
+        
+        if action == 'Research':
+            research_id = req_data['researchId']
+            res = self.get_research_by_id(research_id)
+            res.start_research(self)
+        
+        if action == 'Icebreaker':
+            icebreaker_id = req_data['icebreakerId']
+            brkr = self.get_icebreaker_by_id(icebreaker_id)
+            brkr.start_building(self)
+        
+        if action == 'Datacenter':
+            datacenter_id = req_data['datacenterId']
+            datacenter_hex = req_data['hex']
+            dtcntr = self.get_datacenter_by_id(datacenter_id)
+            
+            dtcntr.start_building(self, datacenter_hex)
+        
+        if action == 'ControlShip':
+            ship_id = req_data['shipId']
+            ship_hex = req_data['hex']
+
+            shp = self.get_ship_by_id(ship_id)
+            #TODO move ship
 
     def __getstate__(self):
         state = self.__dict__.copy()
