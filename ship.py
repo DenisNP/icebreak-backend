@@ -35,7 +35,7 @@ class Ship:
     def __init__(self, data):
         self.id = data['id']
         self.speed = data['speed']
-        self.active = True
+        self.active = False
         
         m = Movement()
         m.rotation = -60
@@ -52,7 +52,7 @@ class Ship:
         if gamestate:
             ice_thickness = gamestate.ice_field.current_field[hex[0]][hex[1]]
             ice_thickness_norm = ice_thickness * 1.0 / 100.0 - 0.5
-            return int(round(base * (1.0 + ice_thickness_norm)))
+            return int(round(base * (1.0 + ice_thickness_norm * 2)))
         else:
             return base
 
@@ -118,18 +118,21 @@ class Ship:
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
 
+        return self.refine_rotation(next_movement)
+        
+
+    def refine_rotation(self, movement):
         # check rotation
-        rot = next_movement.rotation
+        rot = movement.rotation
         while rot > 240:
             rot -= 360
         while rot < -60:
             rot += 360
         
-        index = self.find_index(next_movement.direction, clockwise)
+        index = self.find_index(movement.direction, clockwise)
         if not rot == angles[index]:
-            next_movement.rotation = angles[index]
-        
-        return next_movement
+            movement.rotation = angles[index]
+        return movement
             
     def find_index(self, direction, array):
         for i in range(6):
@@ -137,53 +140,10 @@ class Ship:
                 return i
         return -1
 
-    def force_move(self, hex, gamestate):
-        index = len(self.movements) - 1
-        while index >= 0:
-            attempt = self.if_move_to(self.movements[index].hex, hex)
-            index -= 1
-            if attempt:
-                # move!
-                # delete after
-                len_m = len(self.movements) - 1
-                if index < len_m:
-                    for _ in range(index + 1, len(self.movements)):
-                        self.movements.remove(self.movements[-1])
-                
-                new_movement = Movement()
-                new_movement.hex = hex
-                new_movement.time_to_me = self.get_duration_to_hex(hex, gamestate)
-                new_movement.direction = attempt[0]
-                new_movement.rotation = angles[attempt[1]]
-                self.movements.append(new_movement)
-                return None
-
-        new_movement = Movement()
-        new_movement.hex = hex
-        new_movement.time_to_me = self.get_duration_to_hex(hex, gamestate)
-        current = self.movements[-1].hex
-        
-        new_movement.direction = [1,0]
-        if current[0] < hex[0]:
-            new_movement.direction[0] = 1
-        else:
-            new_movement.direction[0] = -1
-        if current[1] < hex[1]:
-            new_movement.direction[1] = -1
-        elif current[1] > hex[1]:
-            new_movement.direction[1] = 1
-
-        new_movement.rotation = angles[self.find_index(new_movement.direction, clockwise)]
-        self.movements.append(new_movement)
-        
-
-    def if_move_to(self, from_hex, to_hex):
-        for direction_index in range(len(clockwise) - 1):
-            direction = clockwise[direction_index]
-            neightbour = hexes.neighbour_hex(from_hex[0], from_hex[1], direction[0], direction[1])
-            if neightbour[0] == to_hex[0] and neightbour[1] == to_hex[1]:
-                return [direction, direction_index]
-        return None
+    def force_move(self, gamestate, direction):
+        last = self.movements[-1]
+        last.direction = direction
+        last.rotation = angles[self.find_index(direction, clockwise)]
 
     def find_dist(self, movement, array):
         index = self.find_index(movement.direction, array)

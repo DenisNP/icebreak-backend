@@ -117,17 +117,23 @@ class GameState:
         if count_s >= len(self.icebreakers):
             self.status = 1
 
-    def build_datacenter(self, row, col):
+    def build_datacenter(self):
         if self.money >= self.datacenter_cost:
-            for b_hex in self.build_hexes:
-                if b_hex[0] == row and b_hex[1] == col:
-                    self.money -= self.datacenter_cost
-                    self.set_next_dc_cost()
-                    self.datacenters.append(DataCenter(row, col))
-                    self.research_level -= 1
+            free_hexes = [x for x in hexes.build_hexes if self.not_busy(x)]
+            if len(free_hexes) > 0:
+                index = random.randint(0, len(free_hexes) - 1)
+                hex = free_hexes[index]
+                dc = DataCenter(hex[0], hex[1])
+                self.datacenters.append(dc)
+                self.money -= self.datacenter_cost
+                self.datacenter_cost = int(round(self.datacenter_cost * datacenter_cost_coeff))
+                self.research_level += 1
 
-                    self.build_hexes.remove(b_hex)
-                    break
+    def not_busy(self, hex):
+        for dc in self.datacenters:
+            if dc.row == hex[0] and dc.col == hex[1]:
+                return True
+        return False
 
     def activate_ship(self, id):
         for shp in self.ships:
@@ -169,14 +175,13 @@ class GameState:
             brkr.start_building(self)
         
         if action == 'Datacenter':
-            datacenter_hex = req_data['hex']
-            self.build_datacenter(datacenter_hex[0], datacenter_hex[1])
+            self.build_datacenter()
         
         if action == 'ControlShip':
             ship_id = req_data['shipId']
-            ship_hex = req_data['hex']
+            direction = req_data['direction']
             shp = self.get_ship_by_id(ship_id)
-            shp.force_move(ship_hex, self)
+            shp.force_move(direction)
 
     def __getstate__(self):
         state = self.__dict__.copy()

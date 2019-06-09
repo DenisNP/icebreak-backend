@@ -8,7 +8,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [62, 54],
         'salary' : 40,
-        'ttl' : 1800
+        'ttl' : 1200
     },
     {
         'id' : 2,
@@ -17,7 +17,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [3, 86],
         'salary' : 60,
-        'ttl' : 1800
+        'ttl' : 1200
     },
     {
         'id' : 3,
@@ -26,7 +26,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [15, 91],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 4,
@@ -35,7 +35,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [21, 68],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
         {
         'id' : 5,
@@ -44,7 +44,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [24, 45],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 6,
@@ -53,7 +53,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [24, 45],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
         {
         'id' : 7,
@@ -62,7 +62,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [22, 49],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 8,
@@ -71,7 +71,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [57,6],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },    {
         'id': 9,
         'name' : 'Проводка каравана сухогрузов из Китая',
@@ -79,7 +79,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [6, 84],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 10,
@@ -88,16 +88,16 @@ quests_delivery = [
         'description': '',
         'coordinates': [65, 15],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 11,
         'name' : 'Проводка судов на утилизацию из Тикси',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [62, 54],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id': 12,
@@ -106,61 +106,61 @@ quests_delivery = [
         'description': '',
         'coordinates': [49, 36],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 13,
         'name' : 'Исследования полярной фауны',
         'image': 'quests/bear.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [3, 86],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 14,
         'name' : 'Доставка припасов на приледнившуюся подводную лодку',
         'image': 'quests/submarine.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [15, 91],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 15,
         'name' : 'Эвакуация судна замерзшего во льдах',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [21, 68],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 16,
         'name' : 'Доставка экологов на дрейфующую станцию',
         'image': 'quests/science.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [24, 45],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
      {
         'id': 17,
         'name' : 'Прокладка кабеля для подводного датацентра',
         'image': 'quests/science.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [43, 2],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 18,
         'name' : 'Археологическая экспедиция по маршрутам полярных исследователей',
         'image': 'quests/tent.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [68, 47],
         'salary' : 1000,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 19,
@@ -169,7 +169,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [43, 2],
         'salary' : 80,
-        'ttl' : 600
+        'ttl' : 1200
     },
     {
         'id' : 20,
@@ -178,7 +178,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [68, 47],
         'salary' : 60,
-        'ttl' : 600
+        'ttl' : 1200
     }
 ]
 
