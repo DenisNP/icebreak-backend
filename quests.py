@@ -195,6 +195,7 @@ class Quest:
         self.coordinates = data['coordinates']
         self.salary = data['salary']
         self.ttl = data['ttl']
+        self.start_ttl = data['ttl']
 
     def update(self):
         if self.taken and not self.completed and not self.failed:
