@@ -75,6 +75,8 @@ class Ship:
             new_movement = self.movements[-1]
             gamestate.ice_field.place_ship(new_movement.hex)
 
+        gamestate.check_if_complete_quest(self.movements[1])
+
         # self.target_hexes = self.get_allowed_neighbours()
         neighbours = self.get_allowed_neighbours()
         target_hexes = []

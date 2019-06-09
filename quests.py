@@ -185,6 +185,9 @@ quests_delivery = [
 class Quest:
     def __init__(self, data):
         self.completed = False
+        self.taken = False
+        self.failed = False
+
         self.id = data['id']
         self.name = data['name']
         self.image = data['image']
@@ -192,6 +195,17 @@ class Quest:
         self.coordinates = data['coordinates']
         self.salary = data['salary']
         self.ttl = data['ttl']
+
+    def update(self):
+        if self.taken and not self.completed and not self.failed:
+            self.ttl -= 1
+            if self.ttl <= 0:
+                self.failed = True
+
+    def complete_quest(self, gamestate):
+        if self.taken and not self.completed and not self.failed:
+            self.completed = True
+            gamestate.money += self.salary
     
 def get_all():
     all = []
