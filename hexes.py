@@ -50,7 +50,7 @@ def full_hex_exists(r, c):
     return True
 
 def is_hex_exists(r, c):
-    if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
+    if r < 1 or c < 1 or r >= ver_count - 1 or c >= hor_count_even - 1:
         return False
 
     return not is_hex_restricted(r, c)
