@@ -13,8 +13,8 @@ seed = np.random.randint(0, 100)
 # seed = 50
 resolution = 3.5
 
-max_val = 0.66
-min_val = -0.66
+max_val = 0.85
+min_val = -0.55
 
 ticks_between_states = 300
 basic_speed = 2
