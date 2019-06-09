@@ -10,18 +10,8 @@ hex_width = 20
 normal_color = '#00ff00'
 land_color = '#ff0000'
 
-land_hexes = land_mask.mask 
-
-def initial_state(state):
-    colors = []
-    for r in range(ver_count):
-        hor_count = hor_count_even if r % 2 == 0 else hor_count_odd
-        colors.append([])
-        for c in range(hor_count):        
-            colors[r].append(land_color if is_hex_restricted(r, c) else normal_color)
-
-    return colors
-
+land_hexes = land_mask.mask
+build_hexes = []
 
 def get_coords(row, column):
     if row % 2 == 0:
@@ -45,18 +35,23 @@ def neighbour_hex(row, col, horizontal, vertical):
         elif row % 2 == 0 and horizontal == 1:
             c += 1
 
-    # exclude edges
-    if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
-        return None
-
-    if not is_hex_exists(r, c):
+    # if not is_hex_exists(r, c):
+    #     return None
+    if not full_hex_exists(r, c):
         return None
     
     return [r, c]
 
+def full_hex_exists(r, c):
+    for i in [-1, 0, 1]:
+        for k in [-1, 0, 1]:
+            if not is_hex_exists(r + i, c + k):
+                return False
+    return True
+
 def is_hex_exists(r, c):
     if r < 1 or c < 1 or r >= ver_count or c >= hor_count_even:
-        return None
+        return False
 
     return not is_hex_restricted(r, c)
 

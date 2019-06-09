@@ -14,6 +14,7 @@ ships = [
 normal_duration = 40
 rotation_downspeed = 0.8
 clockwise = [[1, 1], [1, 0], [1, -1], [-1, -1], [-1, 0], [-1, 1]]
+angles = [-60, 0, 60, 120, 180, 240]
 movements_length = 3
 
 class Movement:
@@ -54,6 +55,7 @@ class Ship:
             self.movements.pop(0)
         self.movements.append(self.next_movement_from(self.movements[-1]))
         self.left_ticks = self.movements[1].time_to_me
+        self.target_hexes = self.get_allowed_neighbours()
 
     def next_movement_from(self, movement):
         next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], movement.direction[0], movement.direction[1])
@@ -67,7 +69,8 @@ class Ship:
             next_cw = self.find_dist(movement, clockwise)
             next_ccw = self.find_dist(movement, clockwise[::-1])
             next_movement = Movement()
-            if next_cw[0] <= next_ccw[0]:
+            cw = next_cw[0] <= next_ccw[0]
+            if cw:
                 next_movement.direction = next_cw[1]
                 next_movement.hex = next_cw[2]
                 next_duration = self.get_duration_to_hex(next_movement.hex)
@@ -81,6 +84,18 @@ class Ship:
                 next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_ccw[0])))
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
+
+            # check rotation
+            rot = next_movement.rotation
+            while rot > 240:
+                rot -= 360
+            while rot < -60:
+                rot += 360
+            k = 0
+            while (not rot in angles) and k < 10:
+                rot += 60
+                next_movement.rotation += 60 * (1 if cw else -1)
+                k += 1
         
         return next_movement
             
@@ -103,6 +118,16 @@ class Ship:
             if potential_next:
                 break
         return [dist, new_direction, potential_next]
+
+    def get_allowed_neighbours(self):
+        neighbours = []
+        m = self.movements[-1]
+        for direction in clockwise:
+            n = hexes.neighbour_hex(m.hex[0], m.hex[1], direction[0], direction[1])
+            if n:
+                neighbours.append(n)
+
+        return neighbours
 
 def get_all():
     all = []

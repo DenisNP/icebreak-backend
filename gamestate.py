@@ -11,7 +11,7 @@ datacenter_cost_coeff = 1.2
 class GameState:
     def __init__(self):
         self.id = str(uuid.uuid4())
-        self.colors = hexes.initial_state(self)
+        self.build_hexes = hexes.build_hexes.copy()
         
         self.icebreakers = icebreakers.get_all()
         self.research = research.get_all()
@@ -56,10 +56,15 @@ class GameState:
 
     def build_datacenter(self, row, col):
         if self.money >= self.datacenter_cost:
-            self.money -= self.datacenter_cost
-            self.set_next_dc_cost()
-            self.datacenters.append(DataCenter(row, col))
-            self.research_level -= 1
+            for b_hex in self.build_hexes:
+                if b_hex[0] == row and b_hex[1] == col:
+                    self.money -= self.datacenter_cost
+                    self.set_next_dc_cost()
+                    self.datacenters.append(DataCenter(row, col))
+                    self.research_level -= 1
+
+                    self.build_hexes.remove(b_hex)
+                    break
 
     def activate_ship(self, id):
         for shp in self.ships:
