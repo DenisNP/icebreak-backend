@@ -55,7 +55,16 @@ class Ship:
             self.movements.pop(0)
         self.movements.append(self.next_movement_from(self.movements[-1]))
         self.left_ticks = self.movements[1].time_to_me
-        self.target_hexes = self.get_allowed_neighbours()
+
+        self.target_hexes = []
+        for h in self.get_allowed_neighbours():
+            add = True
+            for m in self.movements:
+                if m.hex[0] == h[0] and m.hex[1] == h[1]:
+                    add = False
+                    break
+            if add:
+                target_hexes.append(h)
 
     def next_movement_from(self, movement):
         next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], movement.direction[0], movement.direction[1])
