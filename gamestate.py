@@ -93,7 +93,7 @@ class GameState:
             self.status = -1
 
         count_s = self.ships_count()
-        if count_s >= len(self.icebreakers)
+        if count_s >= len(self.icebreakers):
             self.status = 1
 
     def build_datacenter(self, row, col):
