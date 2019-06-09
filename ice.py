@@ -82,7 +82,7 @@ class Ice:
                 if trail in self.trails:
                     self.current_field[i][k] = max(0, self.current_field[i][k] - self.trails[trail]/10)
 
-        keys = self.trails.keys().copy()
+        keys = self.trails.keys()
         for trail in keys:
             self.trails[trail] -= 1
             if self.trails[trail] <= 0:
