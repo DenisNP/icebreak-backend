@@ -75,8 +75,8 @@ class Ice:
         
         for i in range(len(self.current_field)):
             for k in range(len(self.current_field[i])):
-                next_val = self.next_field[i][k]
-                start_val = self.start_field[i][k]
+                #next_val = self.next_field[i][k]
+                #start_val = self.start_field[i][k]
                 #self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
                 trail = str(i * 1000 - (-k))
                 if trail in self.trails:
