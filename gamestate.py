@@ -5,7 +5,7 @@ from ice import Ice
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
-start_money = 1100
+start_money = 11
 datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
@@ -28,7 +28,7 @@ class GameState:
 
         self.last_request = self.ct()
         self.money = start_money
-        self.research_level = 99
+        self.research_level = 1
         self.datacenters = []
         self.datacenter_cost = 0
         self.set_next_dc_cost()
