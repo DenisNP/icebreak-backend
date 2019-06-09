@@ -37,7 +37,8 @@ class GameState:
 
         self.ice_field = Ice()
         self.status = 0
-        self.last_quest_got = self.ct() - (quest_frequency_per_ship + first_quest_start) * (1000 / ticks_per_second) 
+        self.last_quest_got = self.ct() - int(round((quest_frequency_per_ship - first_quest_start) * (1000 / ticks_per_second)))
+        print(self.last_quest_got, self.ct(), self.ct() - self.last_quest_got, "last got")
 
     def ct(self):
         return int(round(time.time() * 1000))
@@ -64,13 +65,16 @@ class GameState:
 
     def check_if_get_quest(self):
         diff = self.ct() - self.last_quest_got
-        wait = int(round(quest_frequency_per_ship / self.ships_count()) * 1000)
+        wait = int(round(quest_frequency_per_ship / self.ships_count()) * 1000 / ticks_per_second)
+        print(diff, wait)
         if diff >= wait:
             self.last_quest_got = self.ct() + int(round(random.randint(-100, 100) / self.ships_count()))
+            print("get quest", self.last_quest_got, diff, wait)
             quests = list(filter(lambda q: not q.taken and not q.failed and not q.completed, self.quests))
             if len(quests) > 0:
                 idx = random.randint(0, len(quests) - 1)
                 quest = quests[idx]
+                print("quest found")
                 quest.take_quest()
 
     def check_if_complete_quest(self, hex):
@@ -100,7 +104,6 @@ class GameState:
 
             self.ice_field.update()
             self.check_status()
-            self.check_if_get_quest()
 
     def disable_ice(self):
         self.ice_field.enabled = False
