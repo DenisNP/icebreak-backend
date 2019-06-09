@@ -38,7 +38,7 @@ class GameState:
         self.ice_field = Ice()
         self.status = 0
         self.last_quest_got = self.ct() - int(round((quest_frequency_per_ship - first_quest_start) * (1000 / ticks_per_second)))
-        print(self.last_quest_got, self.ct(), self.ct() - self.last_quest_got, "last got")
+        # print(self.last_quest_got, self.ct(), self.ct() - self.last_quest_got, "last got")
 
     def ct(self):
         return int(round(time.time() * 1000))
@@ -66,15 +66,15 @@ class GameState:
     def check_if_get_quest(self):
         diff = self.ct() - self.last_quest_got
         wait = int(round(quest_frequency_per_ship / self.ships_count()) * 1000 / ticks_per_second)
-        print(diff, wait)
+        # print(diff, wait)
         if diff >= wait:
             self.last_quest_got = self.ct() + int(round(random.randint(-100, 100) / self.ships_count()))
-            print("get quest", self.last_quest_got, diff, wait)
+            # print("get quest", self.last_quest_got, diff, wait)
             quests = list(filter(lambda q: not q.taken and not q.failed and not q.completed, self.quests))
             if len(quests) > 0:
                 idx = random.randint(0, len(quests) - 1)
                 quest = quests[idx]
-                print("quest found")
+                # print("quest found")
                 quest.take_quest()
 
     def check_if_complete_quest(self, hex):
@@ -176,7 +176,7 @@ class GameState:
             ship_id = req_data['shipId']
             ship_hex = req_data['hex']
             shp = self.get_ship_by_id(ship_id)
-            shp.force_move(ship_hex)
+            shp.force_move(ship_hex, self)
 
     def __getstate__(self):
         state = self.__dict__.copy()

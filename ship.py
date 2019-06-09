@@ -146,7 +146,7 @@ class Ship:
                 # delete after
                 len_m = len(self.movements) - 1
                 if index < len_m:
-                    for i in range(index + 1, len(self.movements)):
+                    for _ in range(index + 1, len(self.movements)):
                         self.movements.remove(self.movements[-1])
                 
                 new_movement = Movement()
@@ -154,6 +154,27 @@ class Ship:
                 new_movement.time_to_me = self.get_duration_to_hex(hex, gamestate)
                 new_movement.direction = attempt[0]
                 new_movement.rotation = angles[attempt[1]]
+                self.movements.append(new_movement)
+                return None
+
+        new_movement = Movement()
+        new_movement.hex = hex
+        new_movement.time_to_me = self.get_duration_to_hex(hex, gamestate)
+        current = self.movements[-1].hex
+        
+        new_movement.direction = [1,0]
+        if current[0] < hex[0]:
+            new_movement.direction[0] = 1
+        else:
+            new_movement.direction[0] = -1
+        if current[1] < hex[1]:
+            new_movement.direction[1] = -1
+        elif current[1] > hex[1]:
+            new_movement.direction[1] = 1
+
+        new_movement.rotation = angles[self.find_index(new_movement.direction, clockwise)]
+        self.movements.append(new_movement)
+        
 
     def if_move_to(self, from_hex, to_hex):
         for direction_index in range(len(clockwise) - 1):
