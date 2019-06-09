@@ -51,9 +51,8 @@ class Ice:
             for j in range(shape[1]):
                 world[i][j] = round(pnoise2((i + self.hor_shift)/scale, (j + self.ver_shift)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
-        ice = []
+        ice = np.zeros(shape)
         for r in range(len(world)):
-            ice.append([])
             for c in range(len(world[r])):
                 if hexes.is_hex_exists(r, c):
                     val = (world[r][c] - min_val) / (max_val - min_val)
@@ -61,9 +60,9 @@ class Ice:
                         val = 1
                     if val < 0:
                         val = 0
-                    ice[-1].append(int(round(val * 100)))
+                    ice[r][c] = int(round(val * 100))
                 else:
-                    ice[-1].append(0)
+                    ice[r][c] = 0
         
         self.next_field = ice
 
