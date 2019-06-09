@@ -11,7 +11,18 @@ normal_color = '#00ff00'
 land_color = '#ff0000'
 
 land_hexes = land_mask.mask
-build_hexes = []
+build_hexes = [
+    [60, 15],
+    [55, 12],
+    [60, 35],
+    [66, 57],
+    [64, 50],
+    [33, 83],
+    [26, 85],
+    [16, 86],
+    [41, 66],
+    [45, 57]
+]
 
 def get_coords(row, column):
     if row % 2 == 0:
