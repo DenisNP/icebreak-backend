@@ -35,7 +35,5 @@ for c in range(len(world)):
             ice[-1].append(int(round(val * 100)))
         else:
             ice[-1].append(0)
-
-print(ice)
 # for line in world:
 #      print(line)
