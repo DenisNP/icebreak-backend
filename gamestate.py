@@ -1,4 +1,4 @@
-import uuid, jsonpickle, hexes, icebreakers, research, time, ship
+import uuid, jsonpickle, hexes, icebreakers, research, time, ship, ice
 import sys
 from datacenter import DataCenter
 
@@ -24,6 +24,8 @@ class GameState:
         self.datacenters = []
         self.datacenter_cost = 0
         self.set_next_dc_cost()
+
+        self.ice = ice.ice
 
     def ct(self):
         return int(round(time.time() * 1000))

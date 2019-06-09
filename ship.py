@@ -103,11 +103,11 @@ class Ship:
                 rot -= 360
             while rot < -60:
                 rot += 360
-            k = 0
-            while (not rot in angles) and k < 10:
-                rot += 60
-                next_movement.rotation += 60 * (1 if cw else -1)
-                k += 1
+            if not rot in angles:
+                if cw:
+                    next_movement.rotation = angles[next_cw[3]]
+                else:
+                    next_movement.rotation = angles[next_ccw[3]]
         
         return next_movement
             
@@ -129,7 +129,7 @@ class Ship:
             potential_next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], new_direction[0], new_direction[1])
             if potential_next:
                 break
-        return [dist, new_direction, potential_next]
+        return [dist, new_direction, potential_next, new_idx]
 
     def get_allowed_neighbours(self):
         neighbours = []
