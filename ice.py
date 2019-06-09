@@ -82,7 +82,7 @@ class Ice:
 
     def place_ship(self, hex):
         i = hex[0]
-        k = hex[i]
+        k = hex[1]
         start_value = self.start_field[i][k]
         start_value -= 30
         if start_value < 0:
