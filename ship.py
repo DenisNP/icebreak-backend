@@ -124,8 +124,9 @@ class Ship:
             rot -= 360
         while rot < -60:
             rot += 360
-        if not rot in angles:
-            index = self.find_index(next_movement.direction, clockwise)
+        
+        index = self.find_index(next_movement.direction, clockwise)
+        if not rot == angles[index]
             next_movement.rotation = angles[index]
         
         return next_movement
