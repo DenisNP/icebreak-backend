@@ -125,8 +125,8 @@ class IceBreaker:
                 research['completed'] = True
  
     def start_building(self, gamestate):
-        if gamestate.money >= self.cost and self.progress == 0 and all(res.completed == True for res in self.requirements):
-            gamestate.money = gamestate.money - self.cost
+        if gamestate.money >= self.cost and self.progress == 0 and all(res.completed for res in self.requirements):
+            gamestate.money -= self.cost
             self.progress = 1
 
 def get_all():
