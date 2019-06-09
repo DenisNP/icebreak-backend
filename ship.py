@@ -64,7 +64,7 @@ class Ship:
                     add = False
                     break
             if add:
-                target_hexes.append(h)
+                self.target_hexes.append(h)
 
     def next_movement_from(self, movement):
         next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], movement.direction[0], movement.direction[1])
