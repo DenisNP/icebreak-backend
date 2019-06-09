@@ -68,38 +68,39 @@ class Ice:
         self.next_field = ice
 
     def update(self):
-        if self.current_phase >= ticks_between_states:
-            self.move_field()
-            self.generate_next_field()
-            self.current_phase = 0
+        pass
+        # if self.current_phase >= ticks_between_states:
+        #     self.move_field()
+        #     self.generate_next_field()
+        #     self.current_phase = 0
         
-        for i in range(len(self.current_field)):
-            for k in range(len(self.current_field[i])):
-                next_val = self.next_field[i][k]
-                start_val = self.start_field[i][k]
-                self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
-                trail = str(i * 1000 - (-k))
-                if trail in self.trails:
-                    #print("Set trail " + trail, self.trails[trail]/10)
-                    self.current_field[i][k] = max(0, int(round(self.current_field[i][k] - self.trails[trail]/10)))
+        # for i in range(len(self.current_field)):
+        #     for k in range(len(self.current_field[i])):
+        #         next_val = self.next_field[i][k]
+        #         start_val = self.start_field[i][k]
+        #         self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
+        #         trail = str(i * 1000 - (-k))
+        #         if trail in self.trails:
+        #             #print("Set trail " + trail, self.trails[trail]/10)
+        #             self.current_field[i][k] = max(0, int(round(self.current_field[i][k] - self.trails[trail]/10)))
 
-        keys = list(self.trails.keys())
-        for trail in keys:
-            self.trails[trail] -= 1
-            if self.trails[trail] <= 0:
-                self.trails.pop(trail, None)
+        # keys = list(self.trails.keys())
+        # for trail in keys:
+        #     self.trails[trail] -= 1
+        #     if self.trails[trail] <= 0:
+        #         self.trails.pop(trail, None)
 
-        self.current_phase += 1
+        # self.current_phase += 1
 
     def place_ship(self, hex):
-        i = hex[0]
-        k = hex[1]
-        trail = str(i * 1000 - (-k))
-        #print("Print trail " + trail)
-        if trail in self.trails:
-            self.trails[trail] += 500
-        else:
-            self.trails[trail] = 500
+        pass
+        # i = hex[0]
+        # k = hex[1]
+        # trail = str(i * 1000 - (-k))
+        # if trail in self.trails:
+        #     self.trails[trail] += 500
+        # else:
+        #     self.trails[trail] = 500
 
 if __name__ == '__main__':
     world = np.zeros(shape)
