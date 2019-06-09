@@ -183,15 +183,18 @@ quests_delivery = [
 ]
 
 class Quest:
-    quests =[]
-
-    def __init__(self, ship_count):
+    def __init__(self, data):
         self.completed = False
-
-        if (ship_count > 1):
-            for shp in range(ship_count):
-                self.quests.append(self.get_quest())
-
-    def get_quest(self):
-        return quests_delivery[random.randint(1,20)]
+        self.id = data['id']
+        self.name = data['name']
+        self.image = data['image']
+        self.description = data['description']
+        self.coordinates = data['coordinates']
+        self.salary = data['salary']
+        self.ttl = data['ttl']
     
+def get_all():
+    all = []
+    for q_data in quests_delivery:
+        all.append(Quest(q_data))
+    return all

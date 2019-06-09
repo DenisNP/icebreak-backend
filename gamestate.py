@@ -1,4 +1,4 @@
-import uuid, jsonpickle, hexes, icebreakers, research, time, ship
+import uuid, jsonpickle, hexes, icebreakers, research, time, ship, quests
 import sys
 from datacenter import DataCenter
 from ice import Ice
@@ -26,10 +26,15 @@ class GameState:
         self.datacenter_cost = 0
         self.set_next_dc_cost()
 
+        self.quests = quests.get_all()
+
         self.ice_field = Ice()
 
     def ct(self):
         return int(round(time.time() * 1000))
+
+    def ships_count(self):
+        return sum(1 for x in self.icebreakers if x.progress >= x.maximum_progress)
 
     def set_next_dc_cost(self):
         if self.datacenter_cost == 0:
