@@ -25,7 +25,7 @@ class GameState:
         self.datacenter_cost = 0
         self.set_next_dc_cost()
 
-        self.ice = ice.ice.copy()
+        self.ice = ice.ice
 
     def ct(self):
         return int(round(time.time() * 1000))
