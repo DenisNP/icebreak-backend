@@ -5,7 +5,7 @@ from ice import Ice
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
-start_money = 10000
+start_money = 11
 datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
