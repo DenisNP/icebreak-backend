@@ -11,10 +11,10 @@ lacunarity = 3
 
 seed = np.random.randint(0, 100)
 seed = 50
-resolution = 3.5
+resolution = 3
 
-max_val = 0.75
-min_val = -0.75
+max_val = 0.66
+min_val = -0.66
 
 ticks_between_states = 300
 basic_speed = 2
@@ -52,11 +52,11 @@ class Ice:
                 world[i][j] = round(pnoise2((i + self.hor_shift)/scale, (j + self.ver_shift)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
         ice = []
-        for c in range(len(world)):
+        for r in range(len(world)):
             ice.append([])
-            for r in range(len(world[c])):
+            for c in range(len(world[r])):
                 if hexes.is_hex_exists(r, c):
-                    val = (world[c][r] - min_val) / (max_val - min_val)
+                    val = (world[r][c] - min_val) / (max_val - min_val)
                     if val > 1:
                         val = 1
                     if val < 0:
@@ -104,6 +104,7 @@ class Ice:
 if __name__ == '__main__':
     world = np.zeros(shape)
     for i in range(shape[0]):
+        print(len(world[i]))
         for j in range(shape[1]):
             world[i][j] = round(pnoise2((i)/scale, (j)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
