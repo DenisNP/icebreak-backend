@@ -35,7 +35,7 @@ class Ship:
     def __init__(self, data):
         self.id = data['id']
         self.speed = data['speed']
-        self.active = False
+        self.active = True
         
         m = Movement()
         m.rotation = -60
