@@ -42,19 +42,22 @@ class Ship:
     def get_duration_to_hex(self, hex):
         return int(round(normal_duration / self.speed))
 
-    def update(self):
+    def update(self, gamestate):
         if self.active:
             if self.left_ticks > 0:
                 self.left_ticks -= 1
             else:
-                self.set_next_hex()
+                self.set_next_hex(gamestate)
             # print(self.left_ticks)
 
-    def set_next_hex(self):
+    def set_next_hex(self, gamestate):
         while len(self.movements) > movements_length - 1:
             self.movements.pop(0)
         self.movements.append(self.next_movement_from(self.movements[-1]))
         self.left_ticks = self.movements[1].time_to_me
+        
+        new_movement = self.movements[-1]
+        gamestate.ice_field.place_ship(new_movement.hex)
 
         # self.target_hexes = self.get_allowed_neighbours()
         neighbours = self.get_allowed_neighbours()

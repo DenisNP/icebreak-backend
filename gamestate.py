@@ -55,7 +55,7 @@ class GameState:
             res.update()
 
         for shp in self.ships:
-            shp.update()
+            shp.update(self)
 
         self.ice_field.update()
 

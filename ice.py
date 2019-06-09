@@ -80,6 +80,15 @@ class Ice:
 
         self.current_phase += 1
 
+    def place_ship(self, hex):
+        i = hex[0]
+        k = hex[i]
+        start_value = self.start_field[i][k]
+        start_value -= 30
+        if start_value < 0:
+            start_value = 0
+        self.start_field[i][k] = start_value
+
 if __name__ == '__main__':
     world = np.zeros(shape)
     for i in range(shape[0]):
