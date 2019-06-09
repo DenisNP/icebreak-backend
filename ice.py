@@ -93,7 +93,7 @@ class Ice:
         i = hex[0]
         k = hex[1]
         trail = str(i * 1000 + k)
-        if self.trails[trail]:
+        if trail in self.trails:
             self.trails[trail] += 300
         else:
             self.trails[trail] = 300
