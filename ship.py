@@ -75,6 +75,8 @@ class Ship:
             new_movement = self.movements[-1]
             gamestate.ice_field.place_ship(new_movement.hex)
 
+        gamestate.check_if_complete_quest(self.movements[1])
+
         # self.target_hexes = self.get_allowed_neighbours()
         neighbours = self.get_allowed_neighbours()
         target_hexes = []
@@ -122,8 +124,9 @@ class Ship:
             rot -= 360
         while rot < -60:
             rot += 360
-        if not rot in angles:
-            index = self.find_index(next_movement.direction, clockwise)
+        
+        index = self.find_index(next_movement.direction, clockwise)
+        if not rot == angles[index]
             next_movement.rotation = angles[index]
         
         return next_movement

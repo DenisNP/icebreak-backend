@@ -183,15 +183,32 @@ quests_delivery = [
 ]
 
 class Quest:
-    quests =[]
-
-    def __init__(self, ship_count):
+    def __init__(self, data):
         self.completed = False
+        self.taken = False
+        self.failed = False
 
-        if (ship_count > 1):
-            for shp in range(ship_count):
-                self.quests.append(self.get_quest())
+        self.id = data['id']
+        self.name = data['name']
+        self.image = data['image']
+        self.description = data['description']
+        self.coordinates = data['coordinates']
+        self.salary = data['salary']
+        self.ttl = data['ttl']
 
-    def get_quest(self):
-        return quests_delivery[random.randint(1,20)]
+    def update(self):
+        if self.taken and not self.completed and not self.failed:
+            self.ttl -= 1
+            if self.ttl <= 0:
+                self.failed = True
+
+    def complete_quest(self, gamestate):
+        if self.taken and not self.completed and not self.failed:
+            self.completed = True
+            gamestate.money += self.salary
     
+def get_all():
+    all = []
+    for q_data in quests_delivery:
+        all.append(Quest(q_data))
+    return all
