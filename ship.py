@@ -61,7 +61,6 @@ class Ship:
             if self.left_ticks > 0:
                 self.left_ticks -= 1
             else:
-                print("Set next hex")
                 self.set_next_hex(gamestate)
             # print(self.left_ticks)
 

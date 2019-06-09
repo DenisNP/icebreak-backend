@@ -64,9 +64,9 @@ class GameState:
 
     def check_if_get_quest(self):
         diff = self.ct() - self.last_quest_got
-        wait = int(round(quest_frequency_per_ship / self.ships_count()))
+        wait = int(round(quest_frequency_per_ship / self.ships_count()) * 1000)
         if diff >= wait:
-            self.last_quest_got = self.ct() + int(random.randint(-100, 100) / self.ships_count())
+            self.last_quest_got = self.ct() + int(round(random.randint(-100, 100) / self.ships_count()))
             quests = list(filter(lambda q: not q.taken and not q.failed and not q.completed, self.quests))
             if len(quests) > 0:
                 idx = random.randint(0, len(quests) - 1)
