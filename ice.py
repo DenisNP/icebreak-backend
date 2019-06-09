@@ -30,8 +30,12 @@ ice = []
 for c in range(len(world)):
     ice.append([])
     for r in range(len(world[c])):
-        val = (world[c][r] - min_val) / (max_val - min_val)
-        ice[-1].append(int(round(val * 100)))
+        if hexes.is_hex_exists(r, c):
+            val = (world[c][r] - min_val) / (max_val - min_val)
+            ice[-1].append(int(round(val * 100)))
+        else:
+            ice[-1].append(0)
 
+print(ice)
 # for line in world:
 #      print(line)

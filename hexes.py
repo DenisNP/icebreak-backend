@@ -35,10 +35,10 @@ def neighbour_hex(row, col, horizontal, vertical):
         elif row % 2 == 0 and horizontal == 1:
             c += 1
 
-    # if not is_hex_exists(r, c):
-    #     return None
-    if not full_hex_exists(r, c):
+    if not is_hex_exists(r, c):
         return None
+    # if not full_hex_exists(r, c):
+    #     return None
     
     return [r, c]
 
