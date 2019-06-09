@@ -4,7 +4,7 @@ import hexes, copy, random
 
 hor_count = max(hexes.hor_count_even, hexes.hor_count_odd)
 shape = (hexes.ver_count, hor_count)
-scale = 5.0
+scale = 8.0
 octaves = 1
 persistence = 0.25
 lacunarity = 3
