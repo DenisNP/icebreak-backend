@@ -119,15 +119,16 @@ class GameState:
 
     def build_datacenter(self):
         if self.money >= self.datacenter_cost:
-            free_hexes = [x for x in hexes.build_hexes if self.not_busy(x)]
-            if len(free_hexes) > 0:
-                index = random.randint(0, len(free_hexes) - 1)
-                hex = free_hexes[index]
-                dc = DataCenter(hex[0], hex[1])
-                self.datacenters.append(dc)
-                self.money -= self.datacenter_cost
-                self.set_next_dc_cost()
-                self.research_level += 1
+            # free_hexes = [x for x in hexes.build_hexes if self.not_busy(x)]
+            # if len(free_hexes) > 0:
+            #     index = random.randint(0, len(free_hexes) - 1)
+            #     hex = free_hexes[index]
+            #     dc = DataCenter(hex[0], hex[1])
+            dc = DataCenter(0, 0)
+            self.datacenters.append(dc)
+            self.money -= self.datacenter_cost
+            self.set_next_dc_cost()
+            self.research_level += 1
 
     def not_busy(self, hex):
         for dc in self.datacenters:
