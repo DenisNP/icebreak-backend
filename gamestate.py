@@ -22,7 +22,9 @@ class GameState:
         self.research = research.get_all()
         self.ships = ship.get_all()
         self.ships[0].active = True
+
         self.icebreakers[0].progress = self.icebreakers[0].maximum_progress
+        self.research[0].progress = self.research[0].maximum_progress
 
         self.last_request = self.ct()
         self.money = start_money

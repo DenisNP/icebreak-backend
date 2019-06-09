@@ -4,7 +4,7 @@ researches = [
         'name' : 'Корабельная ядерная установка',
         'image': 'http://www.seaships.ru/img/6_27.jpg',
         'description': 'Ядерными энергетическими установками оснащаются мощные ледоколы, используемые в северных широтах земного шара.',
-        'required_level': 1,
+        'required_level': 0,
         'maximum_progress' : 100
     },
     {
@@ -28,7 +28,7 @@ researches = [
         'name' : 'Планкированая сталь для ледового пояса',
         'image': 'http://www.proatom.ru/img14/coj_ris7.jpg',
         'description': 'Для борьбы с интенсивным коррозионным износом металла, с образованием глубоких язв, достигавших глубины 2-5 мм за один сезон.',
-        'required_level': 2,
+        'required_level': 3,
         'maximum_progress' : 1200
     },
         {
@@ -36,7 +36,7 @@ researches = [
         'name' : 'Усовершенствованные гребные винты',
         'image': 'https://cdn.iz.ru/sites/default/files/styles/900x506/public/article-2017-05/0fbbfa8ea4eb373e113ff0a9f4cf006a.jpg?itok=Qh1w1UO4',
         'description': 'Перспективные винты неуязвимы для льда и могут в зависимости от скорости ледокола принимать оптимальную форму. Благодаря этому вырастут маневренность и мощность ледокола. ',
-        'required_level': 2,
+        'required_level': 3,
         'maximum_progress' : 1200
     },
         {
@@ -44,7 +44,7 @@ researches = [
         'name' : 'Энергоснабжение береговых объектов',
         'image': 'https://img-fotki.yandex.ru/get/9815/20701029.85/0_11375f_45b187dd_XXL.jpg',
         'description': 'В марте 2002 года во время стоянки у причала в Мурманске впервые в истории атомного ледокольного флота энергетическая установка атомохода была использована для энергоснабжения береговых объектов.',
-        'required_level': 2,
+        'required_level': 3,
         'maximum_progress' : 2400
     },
         {
@@ -52,7 +52,7 @@ researches = [
         'name' : 'Система электрического движения',
         'image': 'http://information-technology.ru/images/03-15/icebracker6.jpg',
         'description': 'Судовой ледокольный двигатель вращает электрогенератор. Генератор питает двигатель, а тот крутит гребной винт. Это позволяет наилучшим образом управлять скоростью судна.',
-        'required_level': 3,
+        'required_level': 4,
         'maximum_progress' : 2400
     },
         {
@@ -60,7 +60,7 @@ researches = [
         'name' : 'Двухосадочная конструкция',
         'image': 'http://information-technology.ru/images/03-15/icebracker1.jpg',
         'description': 'при глубокой осадке способен проламывать толстые океанские льды, при мелкой — работать в руслах рек, тем самым замещая собой сразу два ледокола: классов «Арктика» и «Таймыр» соответственно.',
-        'required_level': 3,
+        'required_level': 4,
         'maximum_progress' : 3000
     },
         {
@@ -68,7 +68,7 @@ researches = [
         'name' : 'Роботизация узлов и агрегатов',
         'image': 'https://s0.rbk.ru/v6_top_pics/resized/1180xH/media/img/2/83/755404513540832.jpeg',
         'description': 'Максимальная автономность всех систем корабля',
-        'required_level': 3,
+        'required_level': 4,
         'maximum_progress' : 3000
     },
         {
@@ -76,7 +76,7 @@ researches = [
         'name' : 'Автономное управление',
         'image': 'https://myremdom.ru/upload/vk/img/7865_Mf9b8nJbUPY.jpg',
         'description': 'Морские переходы без вмешательства человека',
-        'required_level': 4,
+        'required_level': 6,
         'maximum_progress' : 3600
     },
 
