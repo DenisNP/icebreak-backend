@@ -1,5 +1,5 @@
 import uuid, jsonpickle, hexes, icebreakers, research, time, ship, quests
-import sys
+import sys, random
 from datacenter import DataCenter
 from ice import Ice
 
@@ -10,6 +10,8 @@ datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
 fail_quests_count = 3
+quest_frequency_per_ship = 1200
+first_quest_start = 100
 
 class GameState:
     def __init__(self):
@@ -32,13 +34,14 @@ class GameState:
 
         self.ice_field = Ice()
         self.status = 0
-        self.last_quest_got = 0
+        self.last_quest_got = self.ct() - quest_frequency_per_ship + first_quest_start
 
     def ct(self):
         return int(round(time.time() * 1000))
 
     def ships_count(self):
-        return sum(1 for x in self.icebreakers if x.progress >= x.maximum_progress)
+        cnt = sum(1 for x in self.icebreakers if x.progress >= x.maximum_progress)
+        return max(cnt, 1)
 
     def set_next_dc_cost(self):
         if self.datacenter_cost == 0:
@@ -57,7 +60,15 @@ class GameState:
         self.check_if_get_quest()
 
     def check_if_get_quest(self):
-        pass
+        diff = self.ct() - self.last_quest_got
+        wait = int(round(quest_frequency_per_ship / self.ships_count()))
+        if diff >= wait:
+            self.last_quest_got = self.ct() + int(random.randint(-100, 100) / self.ships_count())
+            quests = list(filter(lambda q: not q.taken and not q.failed and not q.completed, self.quests))
+            if len(quests) > 0:
+                idx = random.randint(0, len(quests) - 1)
+                quest = quests[idx]
+                quest.take_quest()
 
     def check_if_complete_quest(self, hex):
         for q in self.quests:
@@ -86,6 +97,7 @@ class GameState:
 
             self.ice_field.update()
             self.check_status()
+            self.check_if_get_quest()
 
     def check_status(self):
         count_q = sum(1 for x in self.quests if x.failed)
@@ -121,9 +133,6 @@ class GameState:
     def get_icebreaker_by_id(self, icebreaker_id):
         return list(filter(lambda x: x.id == icebreaker_id, self.icebreakers))[0]
     
-    def get_datacenter_by_id(self, datacenter_id):
-        return list(filter(lambda x: x.id == datacenter_id, self.datacenters))[0]
-    
     def get_ship_by_id(self, ship_id):
         return list(filter(lambda x: x.id == ship_id, self.ships))[0]
     
@@ -151,18 +160,14 @@ class GameState:
             brkr.start_building(self)
         
         if action == 'Datacenter':
-            datacenter_id = req_data['datacenterId']
             datacenter_hex = req_data['hex']
-            dtcntr = self.get_datacenter_by_id(datacenter_id)
-            
-            dtcntr.start_building(self, datacenter_hex)
+            self.build_datacenter(datacenter_hex[0], datacenter_hex[1])
         
         if action == 'ControlShip':
             ship_id = req_data['shipId']
             ship_hex = req_data['hex']
-
             shp = self.get_ship_by_id(ship_id)
-            #TODO move ship
+            shp.force_move(ship_hex)
 
     def __getstate__(self):
         state = self.__dict__.copy()

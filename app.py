@@ -31,8 +31,8 @@ def gamestate_json():
         session = GameState()
         sessions[session.id] = session
                 
-
-    
+    if id:
+        session.parse_action(req_data)
     session.update_all()
     return session.to_json()
 

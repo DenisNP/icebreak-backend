@@ -75,7 +75,8 @@ class Ship:
             new_movement = self.movements[-1]
             gamestate.ice_field.place_ship(new_movement.hex)
 
-        gamestate.check_if_complete_quest(self.movements[1])
+        if gamestate:
+            gamestate.check_if_complete_quest(self.movements[1])
 
         # self.target_hexes = self.get_allowed_neighbours()
         neighbours = self.get_allowed_neighbours()
@@ -136,6 +137,32 @@ class Ship:
             if array[i][0] == direction[0] and array[i][1] == direction[1]:
                 return i
         return -1
+
+    def force_move(self, hex, gamestate):
+        index = len(self.movements) - 1
+        while index >= 0:
+            attempt = self.if_move_to(self.movements[index].hex, hex)
+            if attempt:
+                # move!
+                # delete after
+                len_m = len(self.movements) - 1
+                if index < len_m:
+                    for i in range(index + 1, len(self.movements)):
+                        self.movements.remove(self.movements[-1])
+                
+                new_movement = Movement()
+                new_movement.hex = hex
+                new_movement.time_to_me = self.get_duration_to_hex(hex, gamestate)
+                new_movement.direction = attempt[0]
+                new_movement.rotation = angles[attempt[1]]
+
+    def if_move_to(self, from_hex, to_hex):
+        for direction_index in range(len(clockwise) - 1):
+            direction = clockwise[direction_index]
+            neightbour = hexes.neighbour_hex(from_hex[0], from_hex[1], direction[0], direction[1])
+            if neightbour[0] == to_hex[0] and neightbour[1] == to_hex[1]:
+                return [direction, direction_index]
+        return None
 
     def find_dist(self, movement, array):
         index = self.find_index(movement.direction, array)

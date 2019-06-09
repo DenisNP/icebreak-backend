@@ -207,6 +207,12 @@ class Quest:
             self.completed = True
             gamestate.money += self.salary
     
+    def take_quest(self):
+        if not self.taken:
+            self.taken = True
+            # TODO maybe random coordinates
+            # self.coordinates = ...
+    
 def get_all():
     all = []
     for q_data in quests_delivery:
