@@ -6,8 +6,8 @@ hor_count = max(hexes.hor_count_even, hexes.hor_count_odd)
 shape = (hor_count, hexes.ver_count)
 scale = 10.0
 octaves = 1
-persistence = 0
-lacunarity = 0.5
+persistence = 0.25
+lacunarity = 3
 
 seed = np.random.randint(0, 100)
 seed = 50
