@@ -19,7 +19,7 @@ ships = [
     }
 ]
 
-normal_duration = 20
+normal_duration = 30
 rotation_downspeed = 0.8
 clockwise = [[1, 1], [1, 0], [1, -1], [-1, -1], [-1, 0], [-1, 1]]
 angles = [-60, 0, 60, 120, 180, 240]
@@ -61,6 +61,7 @@ class Ship:
             if self.left_ticks > 0:
                 self.left_ticks -= 1
             else:
+                print("Set next hex")
                 self.set_next_hex(gamestate)
             # print(self.left_ticks)
 

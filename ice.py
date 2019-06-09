@@ -78,9 +78,10 @@ class Ice:
                 next_val = self.next_field[i][k]
                 start_val = self.start_field[i][k]
                 self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
-                trail = str(i * 1000 + k)
+                trail = str(i * 1000 - (-k))
                 if trail in self.trails:
-                    self.current_field[i][k] = max(0, self.current_field[i][k] - self.trails[trail]/10)
+                    #print("Set trail " + trail, self.trails[trail]/10)
+                    self.current_field[i][k] = max(0, int(round(self.current_field[i][k] - self.trails[trail]/10)))
 
         keys = list(self.trails.keys())
         for trail in keys:
@@ -93,11 +94,12 @@ class Ice:
     def place_ship(self, hex):
         i = hex[0]
         k = hex[1]
-        trail = str(i * 1000 + k)
+        trail = str(i * 1000 - (-k))
+        #print("Print trail " + trail)
         if trail in self.trails:
-            self.trails[trail] += 300
+            self.trails[trail] += 500
         else:
-            self.trails[trail] = 300
+            self.trails[trail] = 500
 
 if __name__ == '__main__':
     world = np.zeros(shape)
