@@ -28,7 +28,7 @@ class GameState:
 
         self.last_request = self.ct()
         self.money = start_money
-        self.research_level = 0
+        self.research_level = 99
         self.datacenters = []
         self.datacenter_cost = 0
         self.set_next_dc_cost()
