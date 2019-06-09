@@ -13,8 +13,8 @@ seed = np.random.randint(0, 100)
 # seed = 50
 resolution = 3.5
 
-max_val = 0.85
-min_val = -0.35
+max_val = 0.6
+min_val = -0.15
 
 ticks_between_states = 300
 basic_speed = 2
@@ -121,11 +121,11 @@ if __name__ == '__main__':
             if val < 0:
                 val = 0
             v = int(round(val * 100))
-            if v < 20:
+            if v < 25:
                 ice[r].append('-')
-            elif v < 30:
+            elif v < 50:
                 ice[r].append('=')
-            elif v < 60:
+            elif v < 75:
                 ice[r].append('#')
             else:
                 ice[r].append('@')
