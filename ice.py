@@ -79,7 +79,7 @@ class Ice:
                 start_val = self.start_field[i][k]
                 self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
                 trail = str(i * 1000 + k)
-                if self.trails[trail]:
+                if trail in self.trails:
                     self.current_field[i][k] = max(0, self.current_field[i][k] - self.trails[trail]/10)
 
         for trail in self.trails:
