@@ -20,7 +20,7 @@ movements_length = 3
 class Movement:
     time_to_me = normal_duration
     rotation = -60
-    hex = [49, 14]
+    hex = [70, 30]
     direction = [1, 1]
 
 class Ship:
@@ -31,7 +31,7 @@ class Ship:
         
         m = Movement()
         m.rotation = -60
-        m.hex = [49, 14]
+        m.hex = [70, 30]
         m.time_to_me = self.get_duration_to_hex(m.hex)
         m.direction = [1, 1]
 
@@ -97,17 +97,15 @@ class Ship:
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60
 
-            # check rotation
-            rot = next_movement.rotation
-            while rot > 240:
-                rot -= 360
-            while rot < -60:
-                rot += 360
-            if not rot in angles:
-                if cw:
-                    next_movement.rotation = angles[next_cw[3]]
-                else:
-                    next_movement.rotation = angles[next_ccw[3]]
+        # check rotation
+        rot = next_movement.rotation
+        while rot > 240:
+            rot -= 360
+        while rot < -60:
+            rot += 360
+        if not rot in angles:
+            index = self.find_index(self, next_movement.direction, clockwise)
+            next_movement.rotation = angles[index]
         
         return next_movement
             
