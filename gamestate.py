@@ -5,7 +5,7 @@ from ice import Ice
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
-start_money = 11
+start_money = 1100
 datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
@@ -22,6 +22,7 @@ class GameState:
         self.research = research.get_all()
         self.ships = ship.get_all()
         self.ships[0].active = True
+        self.icebreakers[0].progress = self.icebreakers[0].maximum_progress
 
         self.last_request = self.ct()
         self.money = start_money

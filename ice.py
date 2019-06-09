@@ -4,7 +4,7 @@ import hexes, copy, random
 
 hor_count = max(hexes.hor_count_even, hexes.hor_count_odd)
 shape = (hexes.ver_count, hor_count)
-scale = 10.0
+scale = 5.0
 octaves = 1
 persistence = 0.5
 lacunarity = 10
@@ -14,7 +14,7 @@ seed = np.random.randint(0, 100)
 resolution = 3.5
 
 max_val = 0.85
-min_val = -0.55
+min_val = -0.35
 
 ticks_between_states = 300
 basic_speed = 2
