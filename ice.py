@@ -17,13 +17,14 @@ max_val = 0.55
 min_val = -0.35
 
 ticks_between_states = 300
+basic_speed = 10
 
 class Ice:
     def __init__(self):
         self.hor_shift = 0
         self.ver_shift = 0
-        self.hor_speed = 1
-        self.ver_speed = 1
+        self.hor_speed = random.randint(-1, 1) * basic_speed
+        self.ver_speed = random.randint(-1, 1) * basic_speed
 
         self.generate_next_field()
         self.current_field = copy.deepcopy(self.next_field)
@@ -35,8 +36,8 @@ class Ice:
     def move_field(self):
         self.hor_shift += self.hor_speed
         self.ver_shift += self.ver_speed
-        self.hor_speed += random.randint(-1, 1)
-        self.ver_speed += random.randint(-1, 1)
+        self.hor_speed += random.randint(-1, 1) * basic_speed
+        self.ver_speed += random.randint(-1, 1) * basic_speed
 
     def generate_next_field(self):
         try:
