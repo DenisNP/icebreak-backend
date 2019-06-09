@@ -6,25 +6,25 @@ quests_delivery = [
         'name' : 'Ледовая проводка в Диксон',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
-        'salary' : 1000,
-        'ttl' : 600
+        'coordinates': [62, 54],
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 2,
         'name' : 'Проводка каравана на Чукотку',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
-        'salary' : 1000,
-        'ttl' : 600
+        'coordinates': [3, 86],
+        'salary' : 60,
+        'ttl' : 1800
     },
     {
         'id' : 3,
         'name' : 'Доставка топлива и провизии в Певек',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [15, 91],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -33,7 +33,7 @@ quests_delivery = [
         'name' : 'Проводка груза нефтепродуктов в Архангельск',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [21, 68],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -42,7 +42,7 @@ quests_delivery = [
         'name' : 'Научная экспедиция на северный полюс',
         'image': 'quests/science.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [24, 45],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -51,7 +51,7 @@ quests_delivery = [
         'name' : 'Туристический рейс на северный полюс',
         'image': 'quests/tent.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [24, 45],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -60,7 +60,7 @@ quests_delivery = [
         'name' : 'Оборудование для дрейфующей станции',
         'image': 'quests/science.png',
         'description': '',
-        'coordinates': [[1, 1]],
+        'coordinates': [22, 49],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -69,7 +69,7 @@ quests_delivery = [
         'name' : 'Груз на военно-морскую базу',
         'image': 'quests/submarine.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [57,6],
         'salary' : 1000,
         'ttl' : 600
     },    {
@@ -77,7 +77,7 @@ quests_delivery = [
         'name' : 'Проводка каравана сухогрузов из Китая',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [6, 84],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -86,7 +86,7 @@ quests_delivery = [
         'name' : 'Крупный транспортный караван из Мурманска',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [65, 15],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -104,7 +104,7 @@ quests_delivery = [
         'name' : 'Экологическая научная экспедиция',
         'image': 'quests/bear.png',
         'description': '',
-        'coordinates': [1, 1],
+        'coordinates': [49, 36],
         'salary' : 1000,
         'ttl' : 600
     },
@@ -167,8 +167,8 @@ quests_delivery = [
         'name' : 'Помощь Норвежцам в рамках международного сотрудничества',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
-        'salary' : 1000,
+        'coordinates': [43, 2],
+        'salary' : 80,
         'ttl' : 600
     },
     {
@@ -176,8 +176,8 @@ quests_delivery = [
         'name' : 'Груз морепродуктов из Сабетты',
         'image': 'quests/ship.png',
         'description': '',
-        'coordinates': [1, 1],
-        'salary' : 1000,
+        'coordinates': [68, 47],
+        'salary' : 60,
         'ttl' : 600
     }
 ]
