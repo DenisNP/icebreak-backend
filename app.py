@@ -27,6 +27,7 @@ def gamestate_json():
 
     if id and (id in sessions):
         session = sessions[id]
+        session.disable_ice()
     else:
         session = GameState()
         sessions[session.id] = session

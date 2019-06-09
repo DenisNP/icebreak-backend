@@ -37,7 +37,7 @@ class GameState:
 
         self.ice_field = Ice()
         self.status = 0
-        self.last_quest_got = self.ct() - quest_frequency_per_ship + first_quest_start
+        self.last_quest_got = self.ct() - (quest_frequency_per_ship + first_quest_start) * (1000 / ticks_per_second) 
 
     def ct(self):
         return int(round(time.time() * 1000))
@@ -101,6 +101,9 @@ class GameState:
             self.ice_field.update()
             self.check_status()
             self.check_if_get_quest()
+
+    def disable_ice(self):
+        self.ice_field.enabled = False
 
     def check_status(self):
         count_q = sum(1 for x in self.quests if x.failed)
@@ -175,7 +178,10 @@ class GameState:
     def __getstate__(self):
         state = self.__dict__.copy()
         del state['ice_field']
-        state['ice'] = self.ice_field.current_field
+        if self.ice_field.enabled:
+            state['ice'] = self.ice_field.current_field
+        else:
+            state['ice'] = []
         return state
             
     def to_json(self):

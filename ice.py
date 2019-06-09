@@ -33,6 +33,7 @@ class Ice:
 
         self.current_phase = 0
         self.trails = {}
+        self.enabled = True
 
     def move_field(self):
         self.hor_shift += self.hor_speed
