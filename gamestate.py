@@ -159,6 +159,7 @@ class GameState:
         return None
 
     def parse_action(self, req_data):
+        # print(req_data, "parse_action")
         try:
             action = req_data['action']
         except:
@@ -179,9 +180,9 @@ class GameState:
         
         if action == 'ControlShip':
             ship_id = req_data['shipId']
-            direction = req_data['direction']
+            direction = list(req_data['direction'])
             shp = self.get_ship_by_id(ship_id)
-            shp.force_move(direction)
+            shp.force_move(self, direction)
 
     def __getstate__(self):
         state = self.__dict__.copy()

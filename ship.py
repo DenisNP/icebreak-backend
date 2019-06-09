@@ -141,6 +141,7 @@ class Ship:
         return -1
 
     def force_move(self, gamestate, direction):
+        # print(direction)
         last = self.movements[-1]
         last.direction = direction
         last.rotation = angles[self.find_index(direction, clockwise)]
