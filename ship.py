@@ -42,9 +42,9 @@ class Ship:
     def get_duration_to_hex(self, hex, gamestate):
         base = int(round(normal_duration / self.speed))
         if gamestate:
-            ice_thikness = gamestate.ice_field.current_field[hex[0], hex[1]]
-            ice_thikness_norm = ice_thikness * 1.0 / 100.0 - 1.0
-            return int(round(base * (1.0 + ice_thikness_norm)))
+            ice_thickness = (100 - gamestate.ice_field.current_field[hex[0]][hex[1]])
+            ice_thickness_norm = ice_thickness * 1.0 / 100.0 - 1.0
+            return int(round(base * (1.0 + ice_thickness_norm)))
         else:
             return base
 
