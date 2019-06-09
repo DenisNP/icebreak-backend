@@ -32,15 +32,21 @@ class Ship:
         m = Movement()
         m.rotation = -60
         m.hex = [65, 25]
-        m.time_to_me = self.get_duration_to_hex(m.hex)
+        m.time_to_me = self.get_duration_to_hex(m.hex, None)
         m.direction = [1, 1]
 
         self.movements = [m]
         for _ in range(movements_length - 1):
             self.set_next_hex(None)
 
-    def get_duration_to_hex(self, hex):
-        return int(round(normal_duration / self.speed))
+    def get_duration_to_hex(self, hex, gamestate):
+        base = int(round(normal_duration / self.speed))
+        if gamestate:
+            ice_thikness = gamestate.ice_field.current_field[hex[0], hex[1]]
+            ice_thikness_norm = ice_thikness * 1.0 / 100.0 - 1.0
+            return int(round(base * (1.0 + ice_thikness_norm)))
+        else:
+            return base
 
     def update(self, gamestate):
         if self.active:
@@ -53,7 +59,7 @@ class Ship:
     def set_next_hex(self, gamestate):
         while len(self.movements) > movements_length - 1:
             self.movements.pop(0)
-        self.movements.append(self.next_movement_from(self.movements[-1]))
+        self.movements.append(self.next_movement_from(self.movements[-1], gamestate))
         self.left_ticks = self.movements[1].time_to_me
         
         if gamestate:
@@ -73,12 +79,12 @@ class Ship:
 
         self.target_hexes = target_hexes.copy()
 
-    def next_movement_from(self, movement):
+    def next_movement_from(self, movement, gamestate):
         next = hexes.neighbour_hex(movement.hex[0], movement.hex[1], movement.direction[0], movement.direction[1])
         if next:
             next_movement = Movement()
             next_movement.hex = next
-            next_movement.time_to_me = self.get_duration_to_hex(next)
+            next_movement.time_to_me = self.get_duration_to_hex(next, gamestate)
             next_movement.rotation = movement.rotation
             next_movement.direction = movement.direction
         else:
@@ -89,14 +95,14 @@ class Ship:
             if cw:
                 next_movement.direction = next_cw[1]
                 next_movement.hex = next_cw[2]
-                next_duration = self.get_duration_to_hex(next_movement.hex)
+                next_duration = self.get_duration_to_hex(next_movement.hex, gamestate)
                 next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_cw[0])))
                 # rotate clockwise
                 next_movement.rotation = movement.rotation + next_cw[0] * 60
             else:
                 next_movement.direction = next_ccw[1]
                 next_movement.hex = next_ccw[2]
-                next_duration = self.get_duration_to_hex(next_movement.hex)
+                next_duration = self.get_duration_to_hex(next_movement.hex, gamestate)
                 next_movement.time_to_me = int(round(next_duration * (rotation_downspeed ** next_ccw[0])))
                 # rotate counter clockwise
                 next_movement.rotation = movement.rotation - next_ccw[0] * 60

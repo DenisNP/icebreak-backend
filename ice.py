@@ -11,7 +11,7 @@ lacunarity = 3
 
 seed = np.random.randint(0, 100)
 seed = 50
-resolution = 4
+resolution = 3.5
 
 max_val = 0.75
 min_val = -0.75
