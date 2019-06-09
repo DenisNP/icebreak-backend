@@ -27,10 +27,10 @@ max_val = max(flatten)
 min_val = min(flatten)
 
 ice = []
-for c in world:
+for c in range(len(world)):
     ice.append([])
-    for r in c:
-        val = r / (max_val - min_val)
+    for r in range(len(world[c])):
+        val = (world[c][r] - min_val) / (max_val - min_val)
         ice[-1].append(int(round(val * 100)))
 
 # for line in world:
