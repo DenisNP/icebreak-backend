@@ -126,7 +126,7 @@ class GameState:
                 dc = DataCenter(hex[0], hex[1])
                 self.datacenters.append(dc)
                 self.money -= self.datacenter_cost
-                self.datacenter_cost = int(round(self.datacenter_cost * datacenter_cost_coeff))
+                self.set_next_dc_cost()
                 self.research_level += 1
 
     def not_busy(self, hex):
