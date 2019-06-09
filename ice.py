@@ -4,7 +4,7 @@ import hexes, copy, random
 
 hor_count = max(hexes.hor_count_even, hexes.hor_count_odd)
 shape = (hexes.ver_count, hor_count)
-scale = 8.0
+scale = 10.0
 octaves = 1
 persistence = 0.25
 lacunarity = 3
@@ -104,7 +104,6 @@ class Ice:
 if __name__ == '__main__':
     world = np.zeros(shape)
     for i in range(shape[0]):
-        print(len(world[i]))
         for j in range(shape[1]):
             world[i][j] = round(pnoise2((i)/scale, (j)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
