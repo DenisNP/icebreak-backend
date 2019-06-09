@@ -141,6 +141,7 @@ class Ship:
         index = len(self.movements) - 1
         while index >= 0:
             attempt = self.if_move_to(self.movements[index].hex, hex)
+            index -= 1
             if attempt:
                 # move!
                 # delete after
