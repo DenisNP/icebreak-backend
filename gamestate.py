@@ -5,7 +5,7 @@ from ice import Ice
 
 ticks_per_second = 10
 tick_duration = round(1000 / ticks_per_second)
-start_money = 10000
+start_money = 1100
 datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
@@ -23,6 +23,9 @@ class GameState:
         self.ships = ship.get_all()
         self.ships[0].active = True
 
+        self.icebreakers[0].progress = self.icebreakers[0].maximum_progress
+        self.research[0].progress = self.research[0].maximum_progress
+
         self.last_request = self.ct()
         self.money = start_money
         self.research_level = 0
@@ -34,7 +37,7 @@ class GameState:
 
         self.ice_field = Ice()
         self.status = 0
-        self.last_quest_got = self.ct() - quest_frequency_per_ship + first_quest_start
+        self.last_quest_got = self.ct() - (quest_frequency_per_ship + first_quest_start) * (1000 / ticks_per_second) 
 
     def ct(self):
         return int(round(time.time() * 1000))
@@ -61,9 +64,9 @@ class GameState:
 
     def check_if_get_quest(self):
         diff = self.ct() - self.last_quest_got
-        wait = int(round(quest_frequency_per_ship / self.ships_count()))
+        wait = int(round(quest_frequency_per_ship / self.ships_count()) * 1000)
         if diff >= wait:
-            self.last_quest_got = self.ct() + int(random.randint(-100, 100) / self.ships_count())
+            self.last_quest_got = self.ct() + int(round(random.randint(-100, 100) / self.ships_count()))
             quests = list(filter(lambda q: not q.taken and not q.failed and not q.completed, self.quests))
             if len(quests) > 0:
                 idx = random.randint(0, len(quests) - 1)
@@ -98,6 +101,9 @@ class GameState:
             self.ice_field.update()
             self.check_status()
             self.check_if_get_quest()
+
+    def disable_ice(self):
+        self.ice_field.enabled = False
 
     def check_status(self):
         count_q = sum(1 for x in self.quests if x.failed)
@@ -172,7 +178,10 @@ class GameState:
     def __getstate__(self):
         state = self.__dict__.copy()
         del state['ice_field']
-        state['ice'] = self.ice_field.current_field
+        if self.ice_field.enabled:
+            state['ice'] = self.ice_field.current_field
+        else:
+            state['ice'] = []
         return state
             
     def to_json(self):

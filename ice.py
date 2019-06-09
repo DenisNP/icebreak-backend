@@ -4,17 +4,17 @@ import hexes, copy, random
 
 hor_count = max(hexes.hor_count_even, hexes.hor_count_odd)
 shape = (hexes.ver_count, hor_count)
-scale = 8.0
+scale = 5.0
 octaves = 1
-persistence = 0.25
-lacunarity = 3
+persistence = 0.5
+lacunarity = 10
 
 seed = np.random.randint(0, 100)
-seed = 50
-resolution = 3
+# seed = 50
+resolution = 3.5
 
-max_val = 0.66
-min_val = -0.66
+max_val = 0.85
+min_val = -0.35
 
 ticks_between_states = 300
 basic_speed = 2
@@ -33,6 +33,7 @@ class Ice:
 
         self.current_phase = 0
         self.trails = {}
+        self.enabled = True
 
     def move_field(self):
         self.hor_shift += self.hor_speed
@@ -49,7 +50,7 @@ class Ice:
         world = np.zeros(shape)
         for i in range(shape[0]):
             for j in range(shape[1]):
-                world[i][j] = round(pnoise2((i + self.hor_shift)/scale, (j + self.ver_shift)/scale, octaves=octaves, lacunarity=lacunarity, base=random.randint(0, 100))*resolution)/resolution
+                world[i][j] = round(pnoise2((i + self.hor_shift)/scale, (j + self.ver_shift)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
         ice = []
         for r in range(len(world)):
@@ -104,9 +105,30 @@ class Ice:
 if __name__ == '__main__':
     world = np.zeros(shape)
     for i in range(shape[0]):
-        print(len(world[i]))
         for j in range(shape[1]):
             world[i][j] = round(pnoise2((i)/scale, (j)/scale, octaves=octaves, lacunarity=lacunarity, base=seed)*resolution)/resolution
 
     flatten = np.array(world).flatten()
     print(max(flatten), min(flatten))
+
+    ice = []
+    for r in range(len(world)):
+        ice.append([])
+        for c in range(len(world[r])):
+            val = (world[r][c] - min_val) / (max_val - min_val)
+            if val > 1:
+                val = 1
+            if val < 0:
+                val = 0
+            v = int(round(val * 100))
+            if v < 20:
+                ice[r].append('-')
+            elif v < 30:
+                ice[r].append('=')
+            elif v < 60:
+                ice[r].append('#')
+            else:
+                ice[r].append('@')
+
+    for line in ice:
+        print(''.join(line))
