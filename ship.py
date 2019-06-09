@@ -19,7 +19,7 @@ ships = [
     }
 ]
 
-normal_duration = 40
+normal_duration = 20
 rotation_downspeed = 0.8
 clockwise = [[1, 1], [1, 0], [1, -1], [-1, -1], [-1, 0], [-1, 1]]
 angles = [-60, 0, 60, 120, 180, 240]
