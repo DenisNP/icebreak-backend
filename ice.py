@@ -7,17 +7,17 @@ shape = (hor_count, hexes.ver_count)
 scale = 50.0
 octaves = 1
 persistence = 0
-lacunarity = 10.0
+lacunarity = 100
 
 seed = np.random.randint(0, 100)
 seed = 50
 resolution = 5
 
-max_val = 0.55
-min_val = -0.35
+max_val = 0.6
+min_val = -0.4
 
 ticks_between_states = 300
-basic_speed = 10
+basic_speed = 2
 
 class Ice:
     def __init__(self):
@@ -32,6 +32,7 @@ class Ice:
         self.generate_next_field()
 
         self.current_phase = 0
+        self.trails = {}
 
     def move_field(self):
         self.hor_shift += self.hor_speed
@@ -77,17 +78,25 @@ class Ice:
                 next_val = self.next_field[i][k]
                 start_val = self.start_field[i][k]
                 self.current_field[i][k] = int(round(start_val + (next_val - start_val) * (self.current_phase / ticks_between_states)))
+                trail = str(i * 1000 + k)
+                if self.trails[trail]:
+                    self.current_field[i][k] = max(0, self.current_field[i][k] - self.trails[trail]/10)
+
+        for trail in self.trails:
+            self.trails[trail] -= 1
+            if self.trails[trail] <= 0:
+                self.trails.pop(trail, None)
 
         self.current_phase += 1
 
     def place_ship(self, hex):
         i = hex[0]
         k = hex[1]
-        start_value = self.start_field[i][k]
-        start_value -= 30
-        if start_value < 0:
-            start_value = 0
-        self.start_field[i][k] = start_value
+        trail = str(i * 1000 + k)
+        if self.trails[trail]:
+            self.trails[trail] += 300
+        else:
+            self.trails[trail] = 300
 
 if __name__ == '__main__':
     world = np.zeros(shape)
