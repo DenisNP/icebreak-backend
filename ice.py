@@ -11,10 +11,10 @@ lacunarity = 0.5
 
 seed = np.random.randint(0, 100)
 seed = 50
-resolution = 5
+resolution = 4
 
-max_val = 0.6
-min_val = -0.4
+max_val = 0.75
+min_val = -0.75
 
 ticks_between_states = 300
 basic_speed = 2
