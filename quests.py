@@ -8,7 +8,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [62, 54],
         'salary' : 40,
-        'ttl' : 1200
+        'ttl' : 1800
     },
     {
         'id' : 2,
@@ -16,8 +16,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [3, 86],
-        'salary' : 60,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 3,
@@ -25,8 +25,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [15, 91],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 4,
@@ -34,8 +34,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [21, 68],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
         {
         'id' : 5,
@@ -43,8 +43,8 @@ quests_delivery = [
         'image': 'quests/science.png',
         'description': '',
         'coordinates': [24, 45],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 6,
@@ -52,8 +52,8 @@ quests_delivery = [
         'image': 'quests/tent.png',
         'description': '',
         'coordinates': [24, 45],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
         {
         'id' : 7,
@@ -61,8 +61,8 @@ quests_delivery = [
         'image': 'quests/science.png',
         'description': '',
         'coordinates': [22, 49],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 8,
@@ -70,16 +70,16 @@ quests_delivery = [
         'image': 'quests/submarine.png',
         'description': '',
         'coordinates': [57,6],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },    {
         'id': 9,
         'name' : 'Проводка каравана сухогрузов из Китая',
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [6, 84],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 10,
@@ -87,8 +87,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [65, 15],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 11,
@@ -96,8 +96,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [62, 54],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id': 12,
@@ -105,8 +105,8 @@ quests_delivery = [
         'image': 'quests/bear.png',
         'description': '',
         'coordinates': [49, 36],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 13,
@@ -114,8 +114,8 @@ quests_delivery = [
         'image': 'quests/bear.png',
         'description': '',
         'coordinates': [3, 86],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 14,
@@ -123,8 +123,8 @@ quests_delivery = [
         'image': 'quests/submarine.png',
         'description': '',
         'coordinates': [15, 91],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 15,
@@ -132,8 +132,8 @@ quests_delivery = [
         'image': 'quests/ship.png',
         'description': '',
         'coordinates': [21, 68],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 16,
@@ -141,8 +141,8 @@ quests_delivery = [
         'image': 'quests/science.png',
         'description': '',
         'coordinates': [24, 45],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
      {
         'id': 17,
@@ -150,8 +150,8 @@ quests_delivery = [
         'image': 'quests/science.png',
         'description': '',
         'coordinates': [43, 2],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 18,
@@ -159,8 +159,8 @@ quests_delivery = [
         'image': 'quests/tent.png',
         'description': '',
         'coordinates': [68, 47],
-        'salary' : 1000,
-        'ttl' : 1200
+        'salary' : 40,
+        'ttl' : 1800
     },
     {
         'id' : 19,
@@ -169,7 +169,7 @@ quests_delivery = [
         'description': '',
         'coordinates': [43, 2],
         'salary' : 80,
-        'ttl' : 1200
+        'ttl' : 1800
     },
     {
         'id' : 20,
@@ -178,8 +178,8 @@ quests_delivery = [
         'description': '',
         'coordinates': [68, 47],
         'salary' : 60,
-        'ttl' : 1200
-    }
+        'ttl' : 1800
+    },
 ]
 
 class Quest:

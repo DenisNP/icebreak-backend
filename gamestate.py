@@ -10,8 +10,8 @@ datacenter_start_cost = 10
 datacenter_cost_coeff = 1.2
 
 fail_quests_count = 3
-quest_frequency_per_ship = 1200
-first_quest_start = 100
+quest_frequency_per_ship = 1800
+first_quest_start = 200
 
 class GameState:
     def __init__(self):
