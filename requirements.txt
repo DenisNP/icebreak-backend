@@ -1,6 +1,6 @@
 Flask==1.0.3
 gunicorn==19.9.0
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 jsonpickle==1.2
 noise==1.2.2
 numpy==1.16.4
